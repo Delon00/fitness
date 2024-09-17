@@ -5,6 +5,7 @@ import ci.ada.fitness.repositories.RoutineRepository;
 import ci.ada.fitness.services.DTO.RoutineDTO;
 import ci.ada.fitness.services.RoutineService;
 import ci.ada.fitness.services.mapper.RoutineMapper;
+
 import ci.ada.fitness.utils.SlugifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -81,6 +82,16 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public RoutineDTO partialUpdate(RoutineDTO routineDTO, Long id) {
-        return null;
+        log.debug("Request to partially update routine with id: {}", id);
+
+        return routineRepository.findById(id).map(existingRoutine -> {
+                    if (routineDTO.getDate() != null) {
+                        existingRoutine.setDate(routineDTO.getDate());
+                    }
+
+                    return routineRepository.save(existingRoutine);
+                }).map(routineMapper::toDto)
+                .orElseThrow(() -> new IllegalArgumentException("Routine not found with id: " + routineDTO.getId()));
     }
+
 }
