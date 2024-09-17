@@ -15,6 +15,8 @@ public class PerformanceDTO {
 
     private Integer timeExercise;
 
+    private String slug;
+
     private Float caloriesBurned;
 
     private UserDTO user;

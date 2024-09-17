@@ -39,6 +39,9 @@ public class Exercise implements Serializable {
     @Column(name = "type_exercise", nullable = false)
     private String type_Exercise;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @ManyToMany(mappedBy = "exercises")
     private Set<Routine> routines;
 

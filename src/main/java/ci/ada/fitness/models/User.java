@@ -44,6 +44,9 @@ public class User implements Serializable {
     @Column(name = "objective", nullable = false)
     private String objective;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @OneToMany(mappedBy = "user")
     private List<Performance> performances;
 

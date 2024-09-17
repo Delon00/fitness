@@ -16,6 +16,8 @@ public class RoutineDTO {
 
     private Date date;
 
+    private String slug;
+
     private List<ExerciseDTO> exercices;
 
     private UserDTO user;

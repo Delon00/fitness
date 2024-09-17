@@ -31,6 +31,9 @@ public class Performance implements Serializable {
     @Column(name = "calories_burned", nullable = false)
     private Float caloriesBurned;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

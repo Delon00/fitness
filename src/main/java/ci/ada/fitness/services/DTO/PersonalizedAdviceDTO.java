@@ -15,6 +15,8 @@ public class PersonalizedAdviceDTO {
 
     private String category;
 
+    private String slug;
+
     private UserDTO user;
 
     private RoutineDTO routine;

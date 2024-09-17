@@ -1,7 +1,5 @@
 package ci.ada.fitness.services.mapper;
 
-import ci.ada.fitness.models.Exercise;
-
 import ci.ada.fitness.models.Performance;
 import ci.ada.fitness.services.DTO.PerformanceDTO;
 import org.mapstruct.Mapper;

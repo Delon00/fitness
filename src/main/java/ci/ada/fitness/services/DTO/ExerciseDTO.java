@@ -20,6 +20,8 @@ public class ExerciseDTO {
 
     private Integer date;
 
+    private String slug;
+
     private String difficulty;
 
     private String type_Exercise;

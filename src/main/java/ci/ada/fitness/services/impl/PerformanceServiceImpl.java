@@ -31,9 +31,9 @@ public class PerformanceServiceImpl implements PerformanceService {
         log.debug("Request to save performance: {}", performanceDTO);
         Optional<UserDTO> user = userService.findOne(performanceDTO.getId());
         if (user.isPresent()) {
-            performanceDTO.setUtilisateurId(user.get().getId());
+            performanceDTO.setUser(user.get());
         }
-        performanceDTO.getUtilisateurId();
+        performanceDTO.getUser().setPerformances(null);
         Performance performance = performanceMapper.toEntity(performanceDTO);
         performance = performanceRepository.save(performance);
         return performanceMapper.toDto(performance);

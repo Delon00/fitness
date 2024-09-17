@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonalizedAdvice implements Serializable {
+public class PersonalizedAdvice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,9 @@ public class PersonalizedAdvice implements Serializable {
 
     @Column(name = "category", nullable = false)
     private String category;
+
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

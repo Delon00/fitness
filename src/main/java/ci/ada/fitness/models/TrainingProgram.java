@@ -20,7 +20,7 @@ public class TrainingProgram implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "Total_duration", nullable = false)
@@ -31,6 +31,9 @@ public class TrainingProgram implements Serializable {
 
     @Column(name = "Program_objective", nullable = false)
     private String ProgramObjective;
+
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
 
     @OneToMany(mappedBy = "trainingProgram")
     private List<Routine> routines;

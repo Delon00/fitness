@@ -21,13 +21,16 @@ public class Routine implements Serializable {
     @Column(name = "date", nullable = false)
     private Date date;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @ManyToMany
     @JoinTable(
             name = "routine_exercise",
             joinColumns = @JoinColumn(name = "routine_id"),
             inverseJoinColumns = @JoinColumn(name = "exercise_id")
     )
-    private List<Exercise> exercices;
+    private List<Exercise> exercises;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -35,4 +38,8 @@ public class Routine implements Serializable {
 
     @OneToMany(mappedBy = "routine")
     private List<Performance> performances;
+
+    @ManyToOne
+    @JoinColumn(name = "training_program_id")
+    private TrainingProgram trainingProgram;
 }

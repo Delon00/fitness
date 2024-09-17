@@ -16,6 +16,8 @@ public class TrainingProgramDTO {
 
     private String levelRequired;
 
+    private String slug;
+
     private String ProgramObjective;
 
     private List<RoutineDTO> routines;
