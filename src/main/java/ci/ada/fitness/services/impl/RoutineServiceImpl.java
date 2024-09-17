@@ -23,8 +23,8 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public RoutineDTO save(RoutineDTO routineDTO) {
-        log.debug("Request to save Student : {}", routineDTO);
-        final String slug = SlugifyUtils.genereate(String.valueOf(routineDTO.getId()));
+        log.debug("Request to save Routine : {}", routineDTO);
+        final String slug = SlugifyUtils.genereate(("routine-"));
         routineDTO.setSlug(slug);
         Routine routine = routineMapper.toEntity(routineDTO);
         routine = routineRepository.save(routine);
