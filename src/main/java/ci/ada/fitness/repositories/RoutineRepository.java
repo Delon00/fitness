@@ -4,7 +4,9 @@ import ci.ada.fitness.models.Routine;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 public interface RoutineRepository extends JpaRepository<Routine, Long> {
-    // Vous pouvez ajouter des méthodes spécifiques si nécessaire
+    Optional<Routine> findBySlug(String slug);
 }
