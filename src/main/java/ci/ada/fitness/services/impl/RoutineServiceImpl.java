@@ -1,50 +1,82 @@
 package ci.ada.fitness.services.impl;
 
+import ci.ada.fitness.models.Routine;
+import ci.ada.fitness.repositories.RoutineRepository;
 import ci.ada.fitness.services.DTO.RoutineDTO;
 import ci.ada.fitness.services.RoutineService;
+import ci.ada.fitness.services.mapper.RoutineMapper;
+import ci.ada.fitness.utils.SlugifyUtils;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
+@RequiredArgsConstructor
+@Slf4j
 public class RoutineServiceImpl implements RoutineService {
+
+    private final RoutineMapper routineMapper;
+    private final RoutineRepository routineRepository;
+
     @Override
     public RoutineDTO save(RoutineDTO routineDTO) {
-        return null;
+        log.debug("Request to save Student : {}", routineDTO);
+        final String slug = SlugifyUtils.genereate(String.valueOf(routineDTO.getId()));
+        routineDTO.setSlug(slug);
+        Routine routine = routineMapper.toEntity(routineDTO);
+        routine = routineRepository.save(routine);
+        return routineMapper.toDto(routine);
     }
 
     @Override
     public RoutineDTO update(RoutineDTO routineDTO) {
-        return null;
+        return findOne(routineDTO.getId()).map(existingRoutine -> {
+            existingRoutine.setDate(routineDTO.getDate());
+            return save(existingRoutine);
+        }).orElseThrow(()-> new RuntimeException("Routine not found"));
     }
 
     @Override
     public RoutineDTO update(RoutineDTO routineDTO, Long id) {
-        return null;
+        routineDTO.setId(id);
+        return update(routineDTO);
     }
 
     @Override
     public Optional<RoutineDTO> findOne(Long id) {
-        return Optional.empty();
+        return routineRepository.findById(id).map(routineMapper::toDto);
     }
 
     @Override
     public List<RoutineDTO> findAll() {
-        return List.of();
+        return routineRepository.findAll().stream().map(routineMapper::toDto).toList();
     }
 
     @Override
     public void delete(Long id) {
-
+        log.debug("Request to delete routine: {}", id);
+        routineRepository.deleteById(id);
     }
 
     @Override
     public Optional<RoutineDTO> findById(Long id) {
-        return Optional.empty();
+        return routineRepository.findById(id).map(routineMapper::toDto);
     }
 
     @Override
     public Optional<RoutineDTO> findBySlug(String slug) {
-        return Optional.empty();
+        log.debug("Request to get Routine by slug: {}", slug);
+        return routineRepository.findBySlug(slug).map(routineMapper::toDto)
+                .map(routineDTO -> {
+                    log.info("Routine found: {}", routineDTO);
+                    return routineDTO;
+                })
+                .or(() -> {
+                    log.warn("Routine not found for slug: {}", slug);
+                    return Optional.empty();
+                });
     }
 
     @Override
