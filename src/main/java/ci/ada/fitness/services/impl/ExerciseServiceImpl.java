@@ -1,5 +1,6 @@
 package ci.ada.fitness.services.impl;
 
+import ci.ada.fitness.repositories.ExerciseRepository;
 import ci.ada.fitness.services.DTO.ExerciseDTO;
 import ci.ada.fitness.services.ExerciseService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class ExerciseServiceImpl implements ExerciseService {
+
+    private final ExerciseRepository exerciseRepository;
+
     @Override
     public ExerciseDTO save(ExerciseDTO exerciseDTO) {
         return null;
