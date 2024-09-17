@@ -3507,3 +3507,46 @@ Action:
 
 Consider defining a bean of type 'ci.ada.fitness.services.ExerciseService' in your configuration.
 
+2024-09-17T16:03:32.670Z  INFO 19552 --- [fitness] [main] ci.ada.fitness.FitnessApplication        : Starting FitnessApplication using Java 22.0.2 with PID 19552 (C:\Users\mariam\fitness\target\classes started by mariam in C:\Users\mariam\fitness)
+2024-09-17T16:03:32.674Z  INFO 19552 --- [fitness] [main] ci.ada.fitness.FitnessApplication        : No active profile set, falling back to 1 default profile: "default"
+2024-09-17T16:03:34.335Z  INFO 19552 --- [fitness] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-17T16:03:34.477Z  INFO 19552 --- [fitness] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127 ms. Found 6 JPA repository interfaces.
+2024-09-17T16:03:35.709Z  INFO 19552 --- [fitness] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2024-09-17T16:03:35.732Z  INFO 19552 --- [fitness] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-17T16:03:35.732Z  INFO 19552 --- [fitness] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-17T16:03:35.822Z  INFO 19552 --- [fitness] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-17T16:03:35.822Z  INFO 19552 --- [fitness] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3039 ms
+2024-09-17T16:03:36.124Z  INFO 19552 --- [fitness] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-17T16:03:36.266Z  INFO 19552 --- [fitness] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-17T16:03:36.359Z  INFO 19552 --- [fitness] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-17T16:03:36.887Z  INFO 19552 --- [fitness] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-17T16:03:36.927Z  INFO 19552 --- [fitness] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-17T16:03:37.193Z  INFO 19552 --- [fitness] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ac756b
+2024-09-17T16:03:37.196Z  INFO 19552 --- [fitness] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-17T16:03:37.309Z  WARN 19552 --- [fitness] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-09-17T16:03:37.522Z  WARN 19552 --- [fitness] [main] o.h.boot.model.internal.EntityBinder     : HHH000457: Joined inheritance hierarchy [ci.ada.fitness.models.BaseEntity] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+2024-09-17T16:03:38.763Z  INFO 19552 --- [fitness] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-17T16:03:39.525Z  INFO 19552 --- [fitness] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17T16:03:40.112Z  WARN 19552 --- [fitness] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'exerciseRessource' defined in file [C:\Users\mariam\fitness\target\classes\ci\ada\fitness\web\resources\ExerciseRessource.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'ci.ada.fitness.services.ExerciseService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-09-17T16:03:40.113Z  INFO 19552 --- [fitness] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17T16:03:40.116Z  INFO 19552 --- [fitness] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-17T16:03:40.129Z  INFO 19552 --- [fitness] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-17T16:03:40.132Z  INFO 19552 --- [fitness] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-17T16:03:40.150Z  INFO 19552 --- [fitness] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-17T16:03:40.192Z ERROR 19552 --- [fitness] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ci.ada.fitness.web.resources.ExerciseRessource required a bean of type 'ci.ada.fitness.services.ExerciseService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'ci.ada.fitness.services.ExerciseService' in your configuration.
+
