@@ -2340,3 +2340,30 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'fitness_db.training_program'
 2024-09-17T09:34:08.547Z  INFO 12248 --- [fitness] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-09-17T09:34:09.072Z  INFO 12248 --- [fitness] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-09-17T09:34:09.204Z  INFO 12248 --- [fitness] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-17T10:21:17.195Z  INFO 12816 --- [fitness] [main] ci.ada.fitness.FitnessApplication        : Starting FitnessApplication using Java 17.0.11 with PID 12816 (C:\ATOS\fitness\target\classes started by HP in C:\ATOS\fitness)
+2024-09-17T10:21:17.212Z  INFO 12816 --- [fitness] [main] ci.ada.fitness.FitnessApplication        : No active profile set, falling back to 1 default profile: "default"
+2024-09-17T10:21:27.888Z  INFO 12816 --- [fitness] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-17T10:21:28.082Z  INFO 12816 --- [fitness] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 173 ms. Found 6 JPA repository interfaces.
+2024-09-17T10:21:29.319Z  INFO 12816 --- [fitness] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2024-09-17T10:21:29.356Z  INFO 12816 --- [fitness] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-17T10:21:29.356Z  INFO 12816 --- [fitness] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-17T10:21:29.475Z  INFO 12816 --- [fitness] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-17T10:21:29.476Z  INFO 12816 --- [fitness] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11912 ms
+2024-09-17T10:21:30.004Z  INFO 12816 --- [fitness] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-17T10:21:30.119Z  INFO 12816 --- [fitness] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-17T10:21:30.185Z  INFO 12816 --- [fitness] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-17T10:21:30.972Z  INFO 12816 --- [fitness] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-17T10:21:31.107Z  INFO 12816 --- [fitness] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-17T10:21:31.519Z  INFO 12816 --- [fitness] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65db548
+2024-09-17T10:21:31.522Z  INFO 12816 --- [fitness] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-17T10:21:31.654Z  WARN 12816 --- [fitness] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-09-17T10:21:32.024Z  WARN 12816 --- [fitness] [main] o.h.boot.model.internal.EntityBinder     : HHH000457: Joined inheritance hierarchy [ci.ada.fitness.models.BaseEntity] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+2024-09-17T10:21:33.790Z  INFO 12816 --- [fitness] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-17T10:21:42.722Z  INFO 12816 --- [fitness] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-17T10:21:43.930Z  WARN 12816 --- [fitness] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-17T10:21:45.845Z  WARN 12816 --- [fitness] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-09-17T10:21:46.238Z  INFO 12816 --- [fitness] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/'
+2024-09-17T10:21:46.253Z  INFO 12816 --- [fitness] [main] ci.ada.fitness.FitnessApplication        : Started FitnessApplication in 33.141 seconds (process running for 41.36)
+2024-09-17T10:22:07.959Z  INFO 12816 --- [fitness] [http-nio-8084-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-17T10:22:07.960Z  INFO 12816 --- [fitness] [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-17T10:22:07.962Z  INFO 12816 --- [fitness] [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
