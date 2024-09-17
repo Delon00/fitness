@@ -3,34 +3,49 @@ package ci.ada.fitness.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "exercice")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Exercise {
+public class Exercise implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "number", nullable = false)
+    private String number;
+
+    @Column(name = "description", nullable = false)
     private String description;
 
-    private String musclesTravailles;
+    @Column(name = "muscles_work", nullable = false)
+    private String musclesWork;
 
-    private Integer duree;
+    @Column(name = "date", nullable = false)
+    private Integer date;
 
-    private String difficulte;
+    @Column(name = "difficulty", nullable = false)
+    private String difficulty;
 
-    private String typeExercice;
+    @Column(name = "type_exercise", nullable = false)
+    private String type_Exercise;
 
-    @OneToMany(mappedBy = "exercice", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "exercises")
+    private Set<Routine> routines;
+
+    @OneToMany(mappedBy = "exercise")
     private List<Performance> performances;
 
-    @ManyToMany(mappedBy = "exercices")
-    private List<Routine> routines;
 }

@@ -3,6 +3,7 @@ package ci.ada.fitness.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -10,22 +11,31 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingProgram {
+public class TrainingProgram implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
+    @Column(name = "name", nullable = false)
+    private String name;
 
+    @Column(name = "name", nullable = false)
     private String description;
 
-    private Integer dureeTotale;
+    @Column(name = "Total_duration", nullable = false)
+    private Integer TotalDuration;
 
-    private String niveauRequis;
+    @Column(name = "level-required", nullable = false)
+    private String levelRequired;
 
-    private String objectifProgramme;
+    @Column(name = "Program_objective", nullable = false)
+    private String ProgramObjective;
 
-    @OneToMany(mappedBy = "programme", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "trainingProgram")
     private List<Routine> routines;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

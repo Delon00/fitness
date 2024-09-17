@@ -3,37 +3,46 @@ package ci.ada.fitness.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "performance")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Performance {
+public class Performance implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "utilisateur_id")
-    private User utilisateur;
+    @Column(name = "date", nullable = false)
+    private String date;
+
+    @Column(name = "repetition", nullable = false)
+    private Integer repetition;
+
+    @Column(name = "weight_used", nullable = false)
+    private Float weightUsed;
+
+    @Column(name = "time_exercise", nullable = false)
+    private Integer timeExercise;
+
+    @Column(name = "calories_burned", nullable = false)
+    private Float caloriesBurned;
 
     @ManyToOne
-    @JoinColumn(name = "routine_id")
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "routine_id", nullable = false)
     private Routine routine;
 
     @ManyToOne
-    @JoinColumn(name = "exercice_id")
-    private Exercise exercice;
+    @JoinColumn(name = "exercise_id", nullable = false)
+    private Exercise exercise;
 
-    private String date;
 
-    private Integer repetitions;
-
-    private Float poidsUtilise;
-
-    private Integer tempsExercice;
-
-    private Float caloriesBrulees;
 }
 

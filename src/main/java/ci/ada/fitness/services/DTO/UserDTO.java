@@ -1,9 +1,5 @@
 package ci.ada.fitness.services.DTO;
 
-import ci.ada.fitness.models.Performance;
-import ci.ada.fitness.models.PersonalizedAdvice;
-import ci.ada.fitness.models.Routine;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -12,17 +8,30 @@ import java.util.List;
 public class UserDTO {
 
     private Long id;
-    private String nom;
+
+    private String firstName;
+
+    private String lastName;
+
     private String email;
-    private String motDePasse;
-    private Integer age;
-    private Float poids;
-    private Float taille;
-    private String niveau;
-    private String objectif;
-    private List<Performance> performances;
 
-    private List<PersonalizedAdvice> conseilsPersonnalises;
+    private String password;
 
-    private List<Routine> routines;
+    private Integer birthday;
+
+    private Float weight;
+
+    private Float size;
+
+    private String level;
+
+    private String objective;
+
+    private List<PerformanceDTO> performances;
+
+    private List<RoutineDTO> routines;
+
+    private List<TrainingProgramDTO> trainingPrograms;
+
+    private List<PersonalizedAdviceDTO> advices;
 }

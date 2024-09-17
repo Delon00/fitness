@@ -3,6 +3,7 @@ package ci.ada.fitness.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -10,36 +11,48 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String motDePasse;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-    private Integer age;
+    @Column(name = "birthday", nullable = false)
+    private Integer birthday;
 
-    private Float poids;
+    @Column(name = "weight", nullable = false)
+    private Float weight;
 
-    private Float taille;
+    @Column(name = "size", nullable = false)
+    private Float size;
 
-    private String niveau;
+    @Column(name = "level", nullable = false)
+    private String level;
 
-    private String objectif;
+    @Column(name = "objective", nullable = false)
+    private String objective;
 
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Performance> performances;
 
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    private List<PersonalizedAdvice> conseilsPersonnalises;
-
-    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Routine> routines;
+
+    @OneToMany(mappedBy = "user")
+    private List<TrainingProgram> trainingPrograms;
+
+    @OneToMany(mappedBy = "user")
+    private List<PersonalizedAdvice> advices;
 }
