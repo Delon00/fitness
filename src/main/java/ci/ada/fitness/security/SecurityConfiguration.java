@@ -1,4 +1,6 @@
+/*
 package ci.ada.fitness.security;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,3 +13,4 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 }
+ */
