@@ -3,6 +3,7 @@ package ci.ada.fitness.services.impl;
 import ci.ada.fitness.repositories.ExerciseRepository;
 import ci.ada.fitness.services.DTO.ExerciseDTO;
 import ci.ada.fitness.services.ExerciseService;
+import ci.ada.fitness.services.mapper.ExerciseMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,12 @@ import java.util.Optional;
 public class ExerciseServiceImpl implements ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
+    private final ExerciseMapper exerciseMapper;
 
     @Override
     public ExerciseDTO save(ExerciseDTO exerciseDTO) {
+        log.debug("Request to save exercise : {}", exerciseDTO);
+
         return null;
     }
 
