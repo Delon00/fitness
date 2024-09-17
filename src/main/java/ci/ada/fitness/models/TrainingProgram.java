@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "training_program")
+@Table(name = "training")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,13 +24,13 @@ public class TrainingProgram implements Serializable {
     private String description;
 
     @Column(name = "Total_duration", nullable = false)
-    private Integer TotalDuration;
+    private String totalDuration;
 
     @Column(name = "level-required", nullable = false)
     private String levelRequired;
 
-    @Column(name = "Program_objective", nullable = false)
-    private String ProgramObjective;
+    @Column(name = "program_objective", nullable = false)
+    private String programObjective;
 
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
@@ -39,6 +39,6 @@ public class TrainingProgram implements Serializable {
     private List<Routine> routines;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }

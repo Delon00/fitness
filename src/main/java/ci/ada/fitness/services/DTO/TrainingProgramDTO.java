@@ -1,9 +1,12 @@
 package ci.ada.fitness.services.DTO;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class TrainingProgramDTO {
 
     private Long id;
@@ -12,13 +15,13 @@ public class TrainingProgramDTO {
 
     private String description;
 
-    private Integer TotalDuration;
+    private String totalDuration;
 
     private String levelRequired;
 
     private String slug;
 
-    private String ProgramObjective;
+    private String programObjective;
 
     private List<RoutineDTO> routines;
 

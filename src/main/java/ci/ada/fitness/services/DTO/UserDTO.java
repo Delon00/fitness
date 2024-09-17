@@ -33,7 +33,7 @@ public class UserDTO {
 
     private List<RoutineDTO> routines;
 
-    private List<TrainingProgramDTO> trainingPrograms;
+//    private List<TrainingProgramDTO> trainingPrograms;
 
     private List<PersonalizedAdviceDTO> advices;
 }

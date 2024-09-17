@@ -4,8 +4,6 @@ import ci.ada.fitness.services.DTO.TrainingProgramDTO;
 import ci.ada.fitness.services.TrainingProgramService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +18,15 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("api/trainingPrograms")
+@RequestMapping("api/trainings")
 public class TrainingProgramRessource {
 
     private final TrainingProgramService trainingProgramService;
 
-
     @PostMapping
     @ApiResponse(responseCode = "200", description = "Request to save TrainingProgram")
     @Operation(summary = "save new trainingProgram", description = "this endpoint allow to save trainingProgram")
-    public ResponseEntity<TrainingProgramDTO> saveTrainingProgram(@RequestBody TrainingProgramDTO trainingProgram) {
+    public ResponseEntity<TrainingProgramDTO> saveTraining(@RequestBody TrainingProgramDTO trainingProgram) {
         log.debug("REST request to save trainingProgram {}", trainingProgram);
         return new ResponseEntity<>(trainingProgramService.save(trainingProgram), HttpStatus.CREATED);
     }
@@ -70,7 +67,6 @@ public class TrainingProgramRessource {
     @ApiResponses(
             {
                     @ApiResponse(responseCode = "200", description = "Request to get TrainingPrograms"),
-                    @ApiResponse(responseCode = "404", description = "TrainingPrograms not found", content = @Content(schema = @Schema(implementation = String.class)))
             }
     )
     public List<TrainingProgramDTO> getTrainingPrograms() {

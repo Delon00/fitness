@@ -53,8 +53,8 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Routine> routines;
 
-    @OneToMany(mappedBy = "user")
-    private List<TrainingProgram> trainingPrograms;
+//    @OneToMany(mappedBy = "user")
+//    private List<TrainingProgram> trainingPrograms;
 
     @OneToMany(mappedBy = "user")
     private List<PersonalizedAdvice> advices;

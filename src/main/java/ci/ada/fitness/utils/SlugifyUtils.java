@@ -8,7 +8,7 @@ public class SlugifyUtils {
 
     private SlugifyUtils(){}
 
-    public static String genereate(String input){
+    public static String generate(String input){
         String value = String.format("%s,%s",input, UUID.randomUUID());
         final Slugify slg = Slugify.builder().underscoreSeparator(true).build();
 

@@ -6,6 +6,7 @@ import ci.ada.fitness.services.DTO.UserDTO;
 import ci.ada.fitness.services.UserService;
 import ci.ada.fitness.services.mapper.UserMapper;
 import ci.ada.fitness.services.mapping.UserMapping;
+import ci.ada.fitness.utils.SlugifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO save(UserDTO userDTO) {
         log.debug("Request to save user: {}", userDTO);
+        final String slug = SlugifyUtils.generate(String.valueOf(userDTO.getEmail()));
+        userDTO.setSlug(slug);
         User user = userMapper.toEntity(userDTO);
         log.debug("User after mapping{}", user);
         user = userRepository.save(user);
