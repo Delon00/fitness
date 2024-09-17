@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "utilisateur")
+@Table(name = "user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

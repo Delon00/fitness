@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "programme_entraînement")
+@Table(name = "training_program")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
