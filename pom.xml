@@ -86,12 +86,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- lookup parent from repository
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>5.8.0</version> <!-- utilisez la version la plus récente -->
-		</dependency>
-
+			<version>5.8.0</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>
