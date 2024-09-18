@@ -9,6 +9,7 @@ import ci.ada.fitness.services.DTO.UserDTO;
 import ci.ada.fitness.services.TrainingProgramService;
 import ci.ada.fitness.services.UserService;
 import ci.ada.fitness.services.mapper.TrainingProgramMapper;
+import ci.ada.fitness.services.mapping.ExerciseMapping;
 import ci.ada.fitness.utils.SlugifyUtils;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -78,7 +79,13 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
     }
 
     @Override
-    public TrainingProgramDTO partialUpdate(TrainingProgramDTO trainingProgramDTO, Long id) {
-        return null;
+ public TrainingProgramDTO partialUpdate(TrainingProgramDTO trainingProgramDTO, Long id) {
+        log.debug("Request to partial update trainingProgram: {}", trainingProgramDTO);
+        return trainingProgramRepository.findById(id).map(existingTrainingProgram ->{
+            if (trainingProgramDTO.getLevelRequired() !=existingTrainingProgram.getLevelRequired()) {
+                existingTrainingProgram.setLevelRequired(trainingProgramDTO.getLevelRequired());
+            }
+            return trainingProgramRepository.save(existingTrainingProgram);
+        }).map(trainingProgramMapper::toDto).orElseThrow(() -> new IllegalArgumentException("Could not find training program with id: " + trainingProgramDTO.getId()));
     }
 }

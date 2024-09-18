@@ -10,6 +10,7 @@ import ci.ada.fitness.services.PerformanceService;
 import ci.ada.fitness.services.UserService;
 import ci.ada.fitness.services.mapper.PerformanceMapper;
 import ci.ada.fitness.services.mapper.UserMapper;
+import ci.ada.fitness.services.mapping.ExerciseMapping;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -76,6 +77,14 @@ public class PerformanceServiceImpl implements PerformanceService {
 
     @Override
     public PerformanceDTO partialUpdate(PerformanceDTO performanceDTO, Long id) {
-        return null;
+        log.debug("Request to partial update performance: {}", performanceDTO);
+        return performanceRepository.findById(id).map(existingPerformance -> {
+                    if (performanceDTO.getDate() != null) {
+                        existingPerformance.setDate(performanceDTO.getDate());
+                    }
+                    return performanceRepository.save(existingPerformance);
+
+                }).map(performanceMapper::toDto)
+                .orElseThrow(() -> new IllegalArgumentException("Performance not found with id: " + performanceDTO.getId()));
     }
 }

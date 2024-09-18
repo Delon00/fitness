@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class PersonalizedAdviceMapping {
+    private PersonalizedAdviceMapping(){
 
+    }
     public static void partialUpdate(PersonalizedAdvice personalizedAdvice, PersonalizedAdviceDTO personalizedAdviceDTO) {
         if(personalizedAdviceDTO.getAdvice() != null) {
             personalizedAdvice.setAdvice(personalizedAdviceDTO.getAdvice());

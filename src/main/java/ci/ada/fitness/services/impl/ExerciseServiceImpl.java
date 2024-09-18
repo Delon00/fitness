@@ -6,6 +6,7 @@ import ci.ada.fitness.services.DTO.ExerciseDTO;
 import ci.ada.fitness.services.ExerciseService;
 import ci.ada.fitness.services.mapper.ExerciseMapper;
 import ci.ada.fitness.services.mapping.ExerciceMapping;
+import ci.ada.fitness.services.mapping.ExerciseMapping;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -82,7 +83,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     public ExerciseDTO partialUpdate(ExerciseDTO exerciseDTO, Long id) {
 
         return exerciseRepository.findById(id).map(exercise -> {
-            ExerciceMapping.partialUpdate(exercise, exerciseDTO);
+            ExerciseMapping.partialUpdate(exercise, exerciseDTO);
             return exercise;
         }).map(exerciseRepository::save).map(exerciseMapper::toDto).orElse(null);
     }
