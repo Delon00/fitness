@@ -2,18 +2,11 @@ package ci.ada.fitness.services.impl;
 
 import ci.ada.fitness.models.Performance;
 import ci.ada.fitness.models.Routine;
-import ci.ada.fitness.models.TrainingProgram;
-import ci.ada.fitness.models.User;
 import ci.ada.fitness.repositories.PerformanceRepository;
 import ci.ada.fitness.repositories.RoutineRepository;
-import ci.ada.fitness.repositories.UserRepository;
 import ci.ada.fitness.services.DTO.PerformanceDTO;
-import ci.ada.fitness.services.DTO.UserDTO;
 import ci.ada.fitness.services.PerformanceService;
-import ci.ada.fitness.services.UserService;
 import ci.ada.fitness.services.mapper.PerformanceMapper;
-import ci.ada.fitness.services.mapper.UserMapper;
-import ci.ada.fitness.services.mapping.ExerciseMapping;
 import ci.ada.fitness.utils.SlugifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
