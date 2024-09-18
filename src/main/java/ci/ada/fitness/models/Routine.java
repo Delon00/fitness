@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Routine implements Serializable {
+public class Routine extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,12 @@ public class Routine implements Serializable {
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @Column(name = "slug", unique = true, nullable = false)
-    private String slug;
-
     @ManyToOne
     @JoinColumn(name = "personalized_advice_id")
     private PersonalizedAdvice personalizedAdvice;
+
+    @ManyToOne
+    @JoinColumn(name = "training_program_id")
+    private TrainingProgram trainingProgram;
 
 }

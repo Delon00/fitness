@@ -36,5 +36,4 @@ public class UserDTO {
 
     private Set<TrainingProgramDTO> trainingPrograms;
 
-    private List<PersonalizedAdviceDTO> advices;
 }

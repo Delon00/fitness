@@ -8,7 +8,6 @@ import java.util.Optional;
 
 
 public interface PersonalizedAdviceRepository extends JpaRepository<PersonalizedAdvice, Long> {
-    Optional<PersonalizedAdvice> findBySlug(String slug);
     // Vous pouvez ajouter des méthodes spécifiques si nécessaire
 }
 

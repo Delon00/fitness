@@ -1,21 +1,24 @@
 package ci.ada.fitness.services.DTO;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
-@Data
-public class RoutineDTO {
+@Getter
+@Setter
+public class RoutineDTO extends BaseEntityDTO  {
 
     private Long id;
 
     private Date date;
 
-    private String slug;
 
 //    private List<ExerciseDTO> exercises;
 //
-//    private List<PerformanceDTO> performances;
+    private List<PerformanceDTO> performances;
 
     private TrainingProgramDTO trainingProgram;
 

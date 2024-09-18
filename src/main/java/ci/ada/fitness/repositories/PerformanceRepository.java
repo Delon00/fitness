@@ -1,9 +1,6 @@
 package ci.ada.fitness.repositories;
 
-import ci.ada.fitness.models.Performance;
-import ci.ada.fitness.services.DTO.PerformanceDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 

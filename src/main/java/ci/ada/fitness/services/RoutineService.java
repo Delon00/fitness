@@ -1,6 +1,5 @@
 package ci.ada.fitness.services;
 
-import ci.ada.fitness.services.DTO.PerformanceDTO;
 import ci.ada.fitness.services.DTO.RoutineDTO;
 
 import java.util.List;

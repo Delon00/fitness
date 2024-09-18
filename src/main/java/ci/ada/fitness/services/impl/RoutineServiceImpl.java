@@ -2,7 +2,6 @@ package ci.ada.fitness.services.impl;
 
 import ci.ada.fitness.models.Routine;
 import ci.ada.fitness.models.TrainingProgram;
-import ci.ada.fitness.repositories.ExerciseRepository;
 import ci.ada.fitness.repositories.RoutineRepository;
 import ci.ada.fitness.repositories.TrainingProgramRepository;
 import ci.ada.fitness.repositories.UserRepository;
@@ -25,10 +24,7 @@ public class RoutineServiceImpl implements RoutineService {
     private final RoutineMapper routineMapper;
     private final RoutineRepository routineRepository;
     private final UserRepository userRepository;
-    private final ExerciseMapper exerciseMapper;
-    private final ExerciseService exerciseService;
     private final TrainingProgramRepository trainingProgramRepository;
-    private final ExerciseRepository exerciseRepository;
 
     @Override
     public RoutineDTO save(RoutineDTO routineDTO) {

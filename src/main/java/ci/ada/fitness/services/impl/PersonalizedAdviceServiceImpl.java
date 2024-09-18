@@ -73,26 +73,13 @@ public class PersonalizedAdviceServiceImpl implements PersonalizedAdviceService 
         return personalizedAdviceRepository.findById(id).map(personalizedAdviceMapper::toDto);
     }
 
-    @Override
-    public Optional<PersonalizedAdviceDTO> findBySlug(String slug) {
-        log.debug("REST Request to findBySlug PersonalizedAdvice : {}", slug);
-        return personalizedAdviceRepository.findBySlug(slug).map(personalizedAdviceMapper::toDto)
-                .map(personalizedAdviceDTO -> {
-                    log.debug("Personalized found: {}", personalizedAdviceDTO);
-                    return personalizedAdviceDTO;
-                })
-                .or(() -> {
-                    log.debug("PersonalizedAdvice not found for slug: {}", slug);
-                    return Optional.empty();
-                });
-    }
 
     @Override
     public PersonalizedAdviceDTO partialUpdate(PersonalizedAdviceDTO personalizedAdviceDTO, Long id) {
         log.debug("REST Request to partialUpdate PersonalizedAdvice : {}", personalizedAdviceDTO);
         return personalizedAdviceRepository.findById(id).map(existingRoutine -> {
                     if (personalizedAdviceDTO.getDate() != null) {
-                        existingRoutine.setDate(personalizedAdviceDTO.getDate());
+                        existingRoutine.setId(personalizedAdviceDTO.getId());
                     }
 
                     return personalizedAdviceRepository.save(existingRoutine);

@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingProgram implements Serializable {
+public class TrainingProgram extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +31,6 @@ public class TrainingProgram implements Serializable {
 
     @Column(name = "program_objective", nullable = false)
     private String programObjective;
-
-    @Column(name = "slug", unique = true, nullable = false)
-    private String slug;
 
     @OneToMany
     private List<Routine> routines;

@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +54,4 @@ public class User implements Serializable {
     @OneToMany
     private Set<TrainingProgram> trainingPrograms;
 
-    @OneToMany(mappedBy = "user")
-    private List<PersonalizedAdvice> advices;
 }

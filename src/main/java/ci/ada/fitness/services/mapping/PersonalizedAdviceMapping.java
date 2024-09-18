@@ -11,10 +11,7 @@ public class PersonalizedAdviceMapping {
     }
     public static void partialUpdate(PersonalizedAdvice personalizedAdvice, PersonalizedAdviceDTO personalizedAdviceDTO) {
         if(personalizedAdviceDTO.getAdvice() != null) {
-            personalizedAdvice.setAdvice(personalizedAdviceDTO.getAdvice());
-        }
-        if(personalizedAdviceDTO.getCategory() != null) {
-            personalizedAdvice.setCategory(personalizedAdviceDTO.getCategory());
+            personalizedAdvice.setId(personalizedAdviceDTO.getId());
         }
     }
 }
