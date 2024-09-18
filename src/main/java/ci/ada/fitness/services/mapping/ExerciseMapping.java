@@ -1,8 +1,5 @@
 package ci.ada.fitness.services.mapping;
 
-import ci.ada.fitness.models.Exercise;
-import ci.ada.fitness.services.DTO.ExerciseDTO;
-
 public final  class ExerciseMapping {
     private ExerciseMapping(){
 

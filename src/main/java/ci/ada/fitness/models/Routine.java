@@ -24,16 +24,8 @@ public class Routine implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "routine_exercise",
-//            joinColumns = @JoinColumn(name = "routine_id"),
-//            inverseJoinColumns = @JoinColumn(name = "exercise_id")
-//    )
-//    private List<Exercise> exercises;
-//
-//    @OneToMany
-//    private List<Performance> performances;
+    @Column(name = "exercise", nullable = false)
+    private String exercise;
 
     @ManyToOne
     @JoinColumn(name = "training_program_id")
