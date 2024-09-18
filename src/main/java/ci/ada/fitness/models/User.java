@@ -48,9 +48,6 @@ public class User implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @OneToMany(mappedBy = "user")
-    private List<Performance> performances;
-
     @OneToMany
     private List<Routine> routines;
 

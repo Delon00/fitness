@@ -75,12 +75,18 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     public Optional<ExerciseDTO> findById(Long id) {
-        return Optional.empty();
+        log.debug("Request to get exercice by id: {}", id);
+        return exerciseRepository.findById(id).map(exercise -> {
+            return exerciseMapper.toDto(exercise);
+        });
     }
 
     @Override
     public Optional<ExerciseDTO> findBySlug(String slug) {
-        return Optional.empty();
+        log.debug("Request to get exercice by slug: {}", slug);
+        return exerciseRepository.findBySlug(slug).map(exercise -> {
+            return exerciseMapper.toDto(exercise);
+        });
     }
 
     @Override

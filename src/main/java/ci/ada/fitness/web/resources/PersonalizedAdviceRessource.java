@@ -20,11 +20,10 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("api/personalizedAdvices")
+@RequestMapping("api/personalized-advices")
 public class PersonalizedAdviceRessource {
 
     private final PersonalizedAdviceService personalizedAdviceService;
-
 
     @PostMapping
     @ApiResponse(responseCode = "200", description = "Request to save PersonalizedAdvice")

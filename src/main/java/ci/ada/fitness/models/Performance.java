@@ -16,34 +16,15 @@ public class Performance implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date", nullable = false)
-    private String date;
-
-    @Column(name = "repetition", nullable = false)
-    private Integer repetition;
-
-    @Column(name = "weight_used", nullable = false)
-    private Float weightUsed;
-
-    @Column(name = "time_exercise", nullable = false)
-    private Integer timeExercise;
-
-    @Column(name = "calories_burned", nullable = false)
-    private Float caloriesBurned;
-
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
     @ManyToOne
     @JoinColumn(name = "routine_id", nullable = false)
     private Routine routine;
 
     @ManyToOne
-    @JoinColumn(name = "exercise_id", nullable = false)
+    @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 
 

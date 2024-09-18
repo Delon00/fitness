@@ -7,6 +7,7 @@ import ci.ada.fitness.models.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.net.ssl.SSLSession;
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +20,11 @@ public class RoutineDTO {
 
     private String slug;
 
-    private List<ExerciseDTO> exercises;
-
-//    private UserDTO user;
-
-    private List<PerformanceDTO> performances;
+//    private List<ExerciseDTO> exercises;
+//
+//    private List<PerformanceDTO> performances;
 
     private TrainingProgramDTO trainingProgram;
+
 }
 

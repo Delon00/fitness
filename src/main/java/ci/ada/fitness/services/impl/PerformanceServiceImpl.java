@@ -1,9 +1,11 @@
 package ci.ada.fitness.services.impl;
 
 import ci.ada.fitness.models.Performance;
+import ci.ada.fitness.models.Routine;
 import ci.ada.fitness.models.TrainingProgram;
 import ci.ada.fitness.models.User;
 import ci.ada.fitness.repositories.PerformanceRepository;
+import ci.ada.fitness.repositories.RoutineRepository;
 import ci.ada.fitness.repositories.UserRepository;
 import ci.ada.fitness.services.DTO.PerformanceDTO;
 import ci.ada.fitness.services.DTO.UserDTO;
@@ -12,6 +14,7 @@ import ci.ada.fitness.services.UserService;
 import ci.ada.fitness.services.mapper.PerformanceMapper;
 import ci.ada.fitness.services.mapper.UserMapper;
 import ci.ada.fitness.services.mapping.ExerciseMapping;
+import ci.ada.fitness.utils.SlugifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,17 +29,16 @@ public class PerformanceServiceImpl implements PerformanceService {
 
     private final PerformanceMapper performanceMapper;
     private final PerformanceRepository performanceRepository;
-    private final UserService userService;
+    private final RoutineRepository routineRepository;
 
     @Override
     public PerformanceDTO save(PerformanceDTO performanceDTO) {
         log.debug("Request to save performance: {}", performanceDTO);
-        Optional<UserDTO> user = userService.findOne(performanceDTO.getId());
-        if (user.isPresent()) {
-            performanceDTO.setUser(user.get());
-        }
-        performanceDTO.getUser().setPerformances(null);
+        final String slug = SlugifyUtils.generate(("performance-"));
+        performanceDTO.setSlug(slug);
         Performance performance = performanceMapper.toEntity(performanceDTO);
+        Routine routine = routineRepository.findById(performanceDTO.getRoutine().getId()).orElseThrow(() -> new RuntimeException("Routine not found"));
+        performance.setRoutine(routine);
         performance = performanceRepository.save(performance);
         return performanceMapper.toDto(performance);
     }
@@ -45,7 +47,7 @@ public class PerformanceServiceImpl implements PerformanceService {
     public PerformanceDTO update(PerformanceDTO performanceDTO) {
         log.debug("REST to update performance: {}", performanceDTO);
         return findOne(performanceDTO.getId()).map(existingPerformance -> {
-            existingPerformance.setDate(performanceDTO.getDate());
+            existingPerformance.setSlug(performanceDTO.getSlug());
             return save(existingPerformance);
         }).orElseThrow(()-> new RuntimeException("performance not found"));
     }
@@ -96,8 +98,8 @@ public class PerformanceServiceImpl implements PerformanceService {
     public PerformanceDTO partialUpdate(PerformanceDTO performanceDTO, Long id) {
         log.debug("Request to partial update performance: {}", performanceDTO);
         return performanceRepository.findById(id).map(existingPerformance -> {
-                    if (performanceDTO.getDate() != null) {
-                        existingPerformance.setDate(performanceDTO.getDate());
+                    if (performanceDTO.getSlug() != null) {
+                        existingPerformance.setSlug(performanceDTO.getSlug());
                     }
                     return performanceRepository.save(existingPerformance);
 
