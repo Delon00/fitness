@@ -10117,3 +10117,6 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'fitness_db.user_training_pro
 2024-09-18T09:36:47.380Z  INFO 12084 --- [fitness] [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-09-18T09:36:47.382Z  INFO 12084 --- [fitness] [http-nio-8084-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
 2024-09-18T09:37:08.266Z  INFO 12084 --- [fitness] [http-nio-8084-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1565 ms
+2024-09-18T09:54:09.629Z  INFO 12084 --- [fitness] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-18T09:54:09.655Z  INFO 12084 --- [fitness] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-18T09:54:09.702Z  INFO 12084 --- [fitness] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

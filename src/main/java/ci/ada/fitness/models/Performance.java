@@ -23,10 +23,5 @@ public class Performance implements Serializable {
     @JoinColumn(name = "routine_id", nullable = false)
     private Routine routine;
 
-    @ManyToOne
-    @JoinColumn(name = "exercise_id")
-    private Exercise exercise;
-
-
 }
 

@@ -17,24 +17,12 @@ public class PersonalizedAdvice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date", nullable = false)
-    private Date date;
-
-    @Column(name = "advice", nullable = false)
-    private String advice;
-
-    @Column(name = "category", nullable = false)
-    private String category;
-
-    @Column(name = "slug", unique = true, nullable = false)
-    private String slug;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     @ManyToOne
     @JoinColumn(name = "routine_id", nullable = false)
     private Routine routine;
+
+    @ManyToOne
+    @JoinColumn(name = "performance_id", nullable = false)
+    private Performance performance;
 
 }
