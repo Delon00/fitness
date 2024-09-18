@@ -1,6 +1,7 @@
 package ci.ada.fitness.services.impl;
 
 import ci.ada.fitness.models.Performance;
+import ci.ada.fitness.models.TrainingProgram;
 import ci.ada.fitness.models.User;
 import ci.ada.fitness.repositories.PerformanceRepository;
 import ci.ada.fitness.repositories.UserRepository;
@@ -42,37 +43,53 @@ public class PerformanceServiceImpl implements PerformanceService {
 
     @Override
     public PerformanceDTO update(PerformanceDTO performanceDTO) {
-        return null;
+        log.debug("REST to update performance: {}", performanceDTO);
+        return findOne(performanceDTO.getId()).map(existingPerformance -> {
+            existingPerformance.setDate(performanceDTO.getDate());
+            return save(existingPerformance);
+        }).orElseThrow(()-> new RuntimeException("performance not found"));
     }
 
     @Override
     public PerformanceDTO update(PerformanceDTO performanceDTO, Long id) {
-        return null;
+        log.debug("REST Request to update performance: {}", performanceDTO);
+        performanceDTO.setId(id);
+        return update(performanceDTO);
     }
 
     @Override
     public Optional<PerformanceDTO> findOne(Long id) {
-        return Optional.empty();
+        log.debug("REST Request to found performance: {}", id);
+        return performanceRepository.findById(id).map(performance -> {
+            return performanceMapper.toDto(performance);
+        });
     }
 
     @Override
     public List<PerformanceDTO> findAll() {
-        return List.of();
+        log.debug("REST Request to found all performance: {} ", performanceRepository.findAll());
+        return performanceRepository.findAll().stream().map(performanceMapper::toDto).toList();
     }
 
     @Override
     public void delete(Long id) {
+        log.debug("REST Request to delete performance: {}", id);
+        performanceRepository.deleteById(id);
 
     }
 
     @Override
     public Optional<PerformanceDTO> findById(Long id) {
-        return Optional.empty();
+        log.debug("REST Request to get performance: {}", id);
+        return performanceRepository.findById(id).map(performanceMapper::toDto);
     }
 
     @Override
     public Optional<PerformanceDTO> findBySlug(String slug) {
-        return Optional.empty();
+        log.debug("REST Request to get performance: {}", slug);
+        return performanceRepository.findBySlug(slug).map(performance ->{
+            return performanceMapper.toDto(performance);
+        });
     }
 
     @Override
