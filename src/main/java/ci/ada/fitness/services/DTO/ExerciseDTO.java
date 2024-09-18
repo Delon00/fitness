@@ -2,6 +2,7 @@ package ci.ada.fitness.services.DTO;
 
 import lombok.Data;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -16,9 +17,7 @@ public class ExerciseDTO {
 
     private String description;
 
-    private String musclesWork;
-
-    private Integer date;
+    private Date date;
 
     private String slug;
 

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -27,11 +28,8 @@ public class Exercise implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "muscles_work", nullable = false)
-    private String musclesWork;
-
     @Column(name = "date", nullable = false)
-    private Integer date;
+    private Date date;
 
     @Column(name = "difficulty", nullable = false)
     private String difficulty;

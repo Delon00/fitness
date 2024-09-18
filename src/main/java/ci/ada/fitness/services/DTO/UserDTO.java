@@ -3,6 +3,7 @@ package ci.ada.fitness.services.DTO;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class UserDTO {
@@ -33,7 +34,7 @@ public class UserDTO {
 
     private List<RoutineDTO> routines;
 
-//    private List<TrainingProgramDTO> trainingPrograms;
+    private Set<TrainingProgramDTO> trainingPrograms;
 
     private List<PersonalizedAdviceDTO> advices;
 }

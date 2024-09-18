@@ -2,6 +2,7 @@ package ci.ada.fitness.services.DTO;
 
 import ci.ada.fitness.models.Exercise;
 import ci.ada.fitness.models.Performance;
+import ci.ada.fitness.models.TrainingProgram;
 import ci.ada.fitness.models.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -18,10 +19,12 @@ public class RoutineDTO {
 
     private String slug;
 
-    private List<ExerciseDTO> exercices;
+    private List<ExerciseDTO> exercises;
 
-    private UserDTO user;
+//    private UserDTO user;
 
     private List<PerformanceDTO> performances;
+
+    private TrainingProgramDTO trainingProgram;
 }
 

@@ -4,8 +4,10 @@ import ci.ada.fitness.models.Exercise;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
-    // Vous pouvez ajouter des méthodes spécifiques si nécessaire
+   List<Exercise> findByIdIn(List<Long> ids);
 }
 

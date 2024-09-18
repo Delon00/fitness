@@ -33,10 +33,11 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
         log.debug("Request to save trainingProgram: {}", trainingProgramDTO);
         final String slug = SlugifyUtils.generate(String.valueOf(trainingProgramDTO.getLevelRequired()));
         trainingProgramDTO.setSlug(slug);
+
         TrainingProgram trainingProgram = trainingProgramMapper.toEntity(trainingProgramDTO);
-//        Optional<UserDTO> user = userService.findOne(trainingProgramDTO.getUser().getId());
-        User user = userRepository.findById(trainingProgramDTO.getUser().getId()).orElseThrow(() -> new RuntimeException("Forum not found"));
+        User user = userRepository.findById(trainingProgramDTO.getUser().getId()).orElseThrow(() -> new RuntimeException("User not found"));
         trainingProgram.setUser(user);
+
         trainingProgram = trainingProgramRepository.save(trainingProgram);
         return trainingProgramMapper.toDto(trainingProgram);
     }

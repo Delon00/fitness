@@ -1,9 +1,12 @@
 package ci.ada.fitness.services.impl;
 
+import ci.ada.fitness.models.Exercise;
+import ci.ada.fitness.models.User;
 import ci.ada.fitness.repositories.ExerciseRepository;
 import ci.ada.fitness.services.DTO.ExerciseDTO;
 import ci.ada.fitness.services.ExerciseService;
 import ci.ada.fitness.services.mapper.ExerciseMapper;
+import ci.ada.fitness.utils.SlugifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,8 +25,12 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public ExerciseDTO save(ExerciseDTO exerciseDTO) {
         log.debug("Request to save exercise : {}", exerciseDTO);
-
-        return null;
+        final String slug = SlugifyUtils.generate(String.valueOf(exerciseDTO.getName()));
+        exerciseDTO.setSlug(slug);
+        Exercise exercise = exerciseMapper.toEntity(exerciseDTO);
+        log.debug("Exercise after mapping{}", exercise);
+        exercise = exerciseRepository.save(exercise);
+        return exerciseMapper.toDto(exercise);
     }
 
     @Override

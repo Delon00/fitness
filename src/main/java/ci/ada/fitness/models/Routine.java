@@ -32,14 +32,15 @@ public class Routine implements Serializable {
     )
     private List<Exercise> exercises;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    @OneToMany(mappedBy = "routine")
+    @OneToMany
     private List<Performance> performances;
 
     @ManyToOne
     @JoinColumn(name = "training_program_id")
     private TrainingProgram trainingProgram;
+
 }

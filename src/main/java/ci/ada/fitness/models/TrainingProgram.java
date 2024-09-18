@@ -35,7 +35,7 @@ public class TrainingProgram implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @OneToMany(mappedBy = "trainingProgram")
+    @OneToMany
     private List<Routine> routines;
 
     @ManyToOne

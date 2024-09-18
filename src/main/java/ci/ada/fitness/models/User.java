@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "\"user\"")
@@ -50,11 +51,11 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Performance> performances;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Routine> routines;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<TrainingProgram> trainingPrograms;
+    @OneToMany
+    private Set<TrainingProgram> trainingPrograms;
 
     @OneToMany(mappedBy = "user")
     private List<PersonalizedAdvice> advices;

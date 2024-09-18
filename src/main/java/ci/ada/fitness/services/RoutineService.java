@@ -25,4 +25,6 @@ public interface RoutineService {
     Optional<RoutineDTO> findBySlug(String slug);
 
     RoutineDTO partialUpdate(RoutineDTO routineDTO, Long id);
+
+//    Optional<>
 }
