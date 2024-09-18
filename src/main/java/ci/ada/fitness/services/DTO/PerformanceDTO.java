@@ -7,19 +7,7 @@ public class PerformanceDTO {
 
     private Long id;
 
-    private String date;
-
-    private Integer repetition;
-
-    private Float weightUsed;
-
-    private Integer timeExercise;
-
     private String slug;
-
-    private Float caloriesBurned;
-
-    private UserDTO user;
 
     private RoutineDTO routine;
 

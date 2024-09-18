@@ -10,14 +10,8 @@ public class PerformanceMapping {
     }
 
     public static void partialUpdate(Performance performance, PerformanceDTO performanceDTO){
-        if(performanceDTO.getDate() != null) {
-            performance.setDate(performanceDTO.getDate());
-        }
-        if(performanceDTO.getRepetition() != null) {
-            performance.setRepetition(performanceDTO.getRepetition());
-        }
-        if(performanceDTO.getWeightUsed() != null) {
-            performance.setWeightUsed(performanceDTO.getWeightUsed());
+        if(performanceDTO.getSlug() != null) {
+            performance.setSlug(performanceDTO.getSlug());
         }
     }
 }
