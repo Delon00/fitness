@@ -40,7 +40,7 @@ public class Exercise implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @ManyToMany(mappedBy = "exercises")
+    @ManyToMany
     private Set<Routine> routines;
 
     @OneToMany(mappedBy = "exercise")

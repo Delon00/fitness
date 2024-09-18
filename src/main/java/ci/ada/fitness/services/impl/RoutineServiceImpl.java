@@ -34,6 +34,7 @@ public class RoutineServiceImpl implements RoutineService {
     private final ExerciseMapper exerciseMapper;
     private final ExerciseService exerciseService;
     private final TrainingProgramRepository trainingProgramRepository;
+    private final ExerciseRepository exerciseRepository;
 
     @Override
     public RoutineDTO save(RoutineDTO routineDTO) {
@@ -41,19 +42,8 @@ public class RoutineServiceImpl implements RoutineService {
         final String slug = SlugifyUtils.generate(("routine-"));
         routineDTO.setSlug(slug);
         Routine routine = routineMapper.toEntity(routineDTO);
-
-        List<ExerciseDTO> exerciseDTOs = exerciseService.findAll();
-        List<Exercise> exercises = new ArrayList<>();
-        for (ExerciseDTO exerciseDTO : exerciseDTOs) {
-            Exercise exercise = exerciseMapper.toEntity(exerciseDTO);
-            exercises.add(exercise);
-        }
-        routine.setExercises(exercises);
-
         TrainingProgram trainingProgram = trainingProgramRepository.findById(routineDTO.getTrainingProgram().getId()).orElseThrow(() -> new RuntimeException("Training not found"));
-
         routine.setTrainingProgram(trainingProgram);
-
         routine = routineRepository.save(routine);
         return routineMapper.toDto(routine);
     }

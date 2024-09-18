@@ -17,8 +17,5 @@ public class RoutineMapping {
         if(routineDTO.getSlug() != null) {
             routine.setSlug(routineDTO.getSlug());
         }
-        if(routineDTO.getExercices() != null) {
-            routine.setExercises(routineDTO.getExercices());
-        }
     }
 }
