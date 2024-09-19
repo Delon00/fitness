@@ -42,5 +42,4 @@ public class Coach implements Serializable {
     )
     private Set<Speciality> specialities;
 
-
 }

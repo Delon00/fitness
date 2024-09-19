@@ -25,6 +25,11 @@ public class Exercise implements Serializable {
 
     @Column(name = "description", nullable = false)
     private String description;
-    // Other fields and relationships
+
+    @Column(name = "difficulty", nullable = false)
+    private String difficulty;
+
+    @Column(name = "duration", nullable = false)
+    private String duration;
 
 }
