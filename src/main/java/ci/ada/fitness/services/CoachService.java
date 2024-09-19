@@ -24,5 +24,5 @@ public interface CoachService {
     Optional<CoachDTO> findBySlug(String slug);
 
 
-
+    CoachDTO partialUpdate(CoachDTO coachDTO, Long id);
 }
