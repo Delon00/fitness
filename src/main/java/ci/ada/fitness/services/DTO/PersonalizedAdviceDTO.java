@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.util.Date;
 
 @Getter
@@ -12,11 +13,11 @@ public class PersonalizedAdviceDTO extends BaseEntityDTO {
 
     private Long id;
 
-    private Date date;
+    private String content;
 
-    private String advice;
+    private Instant dateAdvice;
 
-    private String category;
+    private String slug;
 
     private RoutineDTO routine;
 }

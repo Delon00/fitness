@@ -13,13 +13,18 @@ public class RoutineDTO extends BaseEntityDTO  {
 
     private Long id;
 
+    private String name;
+
     private Date date;
 
+    private String slug;
 
 //    private List<ExerciseDTO> exercises;
 //
 
     private TrainingProgramDTO trainingProgram;
+
+    private PersonalizedAdviceDTO personalizedAdvice;
 
 }
 

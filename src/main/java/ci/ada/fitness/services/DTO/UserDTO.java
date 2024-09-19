@@ -1,11 +1,14 @@
 package ci.ada.fitness.services.DTO;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 public class UserDTO {
 
     private Long id;
@@ -24,12 +27,9 @@ public class UserDTO {
 
     private Float size;
 
-    private String level;
-
     private String objective;
 
     private String slug;
-
 
     private List<RoutineDTO> routines;
 
