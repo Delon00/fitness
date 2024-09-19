@@ -7,8 +7,8 @@ import ci.ada.fitness.repositories.SpecialityRepository;
 import ci.ada.fitness.services.CoachService;
 import ci.ada.fitness.services.DTO.CoachDTO;
 import ci.ada.fitness.services.mapper.CoachMapper;
+import ci.ada.fitness.services.mapping.CoachMapping;
 import ci.ada.fitness.utils.SlugifyUtils;
-import jakarta.persistence.OneToOne;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,43 +41,56 @@ public class CoachServiceImpl implements CoachService {
 
     @Override
     public CoachDTO update(CoachDTO coachDTO) {
-        log.debug("REST Request to update Coach : {}", coachDTO);
-        return null;
+        return findOne(coachDTO.getId()).map(existingCoach -> {
+            existingCoach.setFirstName(coachDTO.getFirstName());
+            existingCoach.setLastName(coachDTO.getLastName());
+            existingCoach.setSpeciality(specialityRepository.findById(coachDTO.getSpeciality().getId()).orElseThrow(() -> new RuntimeException("Speciality not found")));
+            return save(existingCoach);
+        }).orElseThrow(()-> new RuntimeException("Coach not found"));
     }
+
 
     @Override
     public CoachDTO update(CoachDTO coachDTO, Long id) {
-        return null;
+        coachDTO.setId(id);
+        return update(coachDTO);
     }
+
+
 
     @Override
     public Optional<CoachDTO> findOne(Long id) {
-        log.debug("Request to get Coach by id:{}", id);
-        return Optional.empty();
+        return coachRepository.findById(id).map(coachMapper::toDto);
     }
 
     @Override
     public List<CoachDTO> findAll() {
-        log.debug("Request to get all Coaches");
-        return List.of();
+        return coachRepository.findAll().stream().map(coachMapper::toDto).toList();
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Coach: {}", id);
+        log.debug("Request to delete coach: {}", id);
         coachRepository.deleteById(id);
-
     }
 
     @Override
     public Optional<CoachDTO> findById(Long id) {
-        log.debug("Request to get Coach by id:{}", id);
-        return Optional.empty();
+        return coachRepository.findById(id).map(coachMapper::toDto);
     }
 
     @Override
     public Optional<CoachDTO> findBySlug(String slug) {
-        log.debug("Request to get Coach by slug:{}", slug);
-        return Optional.empty();
+        log.debug("Request to get coach by slug:{}", slug);
+        return coachRepository.findBySlug(slug).map(coachMapper::toDto);
+    }
+
+    @Override
+    public CoachDTO partialUpdate(CoachDTO coachDTO, Long id) {
+        log.debug("Request to partial update coach with id : {} ", id);
+        return coachRepository.findById(id).map(coach -> {
+            CoachMapping.partialUpdate(coach, coachDTO);
+            return coach;
+        }).map(coachRepository::save).map(coachMapper::toDto).orElse(null);
     }
 }
