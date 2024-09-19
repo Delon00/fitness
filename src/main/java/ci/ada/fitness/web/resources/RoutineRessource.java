@@ -79,18 +79,18 @@ public class RoutineRessource {
     }
 
 
-    @GetMapping("/slug/{slug}")
-    @ApiResponse(responseCode = "200", description = "Return a routine by its slug")
-    @Operation(summary = "Find a routine by its slug", description = "This endpoint allows to find a routine by its slug")
-    public ResponseEntity<RoutineDTO> findRoutineBySlug(
-            @Parameter(required = true, description = "Slug of the routine to be retrieved")
-            @PathVariable String slug
-    ) {
-        log.debug("REST request to get Routine by slug : {}", slug);
-        Optional<RoutineDTO> routine = routineService.findBySlug(slug);
-        if (routine.isPresent()) {
-            return new ResponseEntity<>(routine.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+//    @GetMapping("/slug/{slug}")
+//    @ApiResponse(responseCode = "200", description = "Return a routine by its slug")
+//    @Operation(summary = "Find a routine by its slug", description = "This endpoint allows to find a routine by its slug")
+//    public ResponseEntity<RoutineDTO> findRoutineBySlug(
+//            @Parameter(required = true, description = "Slug of the routine to be retrieved")
+//            @PathVariable String slug
+//    ) {
+//        log.debug("REST request to get Routine by slug : {}", slug);
+//        Optional<RoutineDTO> routine = routineService.findBySlug(slug);
+//        if (routine.isPresent()) {
+//            return new ResponseEntity<>(routine.get(), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
 }

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Table(name = "exercise")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Exercise extends BaseEntity implements Serializable {
+public class Exercise implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

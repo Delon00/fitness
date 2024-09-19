@@ -12,8 +12,7 @@ import java.io.Serializable;
 @Table(name = "coach")
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "email")
-public class Coach extends BaseEntity implements Serializable {
+public class Coach implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,6 @@ public class Coach extends BaseEntity implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-//    @Email(message = "Invalid email address")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 

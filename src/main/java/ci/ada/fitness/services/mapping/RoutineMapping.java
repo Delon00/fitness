@@ -14,8 +14,5 @@ public class RoutineMapping {
         if(routineDTO.getDate() != null) {
             routine.setDate(routineDTO.getDate());
         }
-        if(routineDTO.getSlug() != null) {
-            routine.setSlug(routineDTO.getSlug());
-        }
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingProgram extends BaseEntity implements Serializable {
+public class TrainingProgram implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

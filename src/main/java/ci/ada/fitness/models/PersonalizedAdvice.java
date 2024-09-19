@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonalizedAdvice extends BaseEntity implements Serializable {
+public class PersonalizedAdvice implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

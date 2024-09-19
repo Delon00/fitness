@@ -11,8 +11,7 @@ import java.util.List;
 @Table(name = "routine")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class Routine extends BaseEntity implements Serializable {
+public class Routine implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

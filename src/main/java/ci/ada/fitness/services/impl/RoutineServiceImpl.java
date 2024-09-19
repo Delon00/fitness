@@ -73,19 +73,19 @@ public class RoutineServiceImpl implements RoutineService {
         return routineRepository.findById(id).map(routineMapper::toDto);
     }
 
-    @Override
-    public Optional<RoutineDTO> findBySlug(String slug) {
-        log.debug("Request to get Routine by slug: {}", slug);
-        return routineRepository.findBySlug(slug).map(routineMapper::toDto)
-                .map(routineDTO -> {
-                    log.info("Routine found: {}", routineDTO);
-                    return routineDTO;
-                })
-                .or(() -> {
-                    log.warn("Routine not found for slug: {}", slug);
-                    return Optional.empty();
-                });
-    }
+//    @Override
+//    public Optional<RoutineDTO> findBySlug(String slug) {
+//        log.debug("Request to get Routine by slug: {}", slug);
+//        return routineRepository.findBySlug(slug).map(routineMapper::toDto)
+//                .map(routineDTO -> {
+//                    log.info("Routine found: {}", routineDTO);
+//                    return routineDTO;
+//                })
+//                .or(() -> {
+//                    log.warn("Routine not found for slug: {}", slug);
+//                    return Optional.empty();
+//                });
+//    }
 
     @Override
     public RoutineDTO partialUpdate(RoutineDTO routineDTO, Long id) {

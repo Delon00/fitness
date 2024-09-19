@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Table(name = "speciality")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Speciality extends BaseEntity implements Serializable {
+public class Speciality implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
