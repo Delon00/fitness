@@ -20,6 +20,7 @@ import java.util.Optional;
 public class PersonalizedAdviceServiceImpl implements PersonalizedAdviceService {
     private final PersonalizedAdviceMapper personalizedAdviceMapper;
     private final PersonalizedAdviceRepository personalizedAdviceRepository;
+
     @Override
     public PersonalizedAdviceDTO save(PersonalizedAdviceDTO personalizedAdviceDTO) {
         log.debug("REST Request to save PersonalizedAdvice : {}", personalizedAdviceDTO);
