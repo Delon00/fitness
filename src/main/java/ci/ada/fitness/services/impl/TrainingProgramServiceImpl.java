@@ -4,13 +4,11 @@ import ci.ada.fitness.models.TrainingProgram;
 import ci.ada.fitness.models.User;
 import ci.ada.fitness.repositories.TrainingProgramRepository;
 import ci.ada.fitness.repositories.UserRepository;
+import ci.ada.fitness.services.ClientService;
 import ci.ada.fitness.services.DTO.TrainingProgramDTO;
-import ci.ada.fitness.services.DTO.UserDTO;
 import ci.ada.fitness.services.TrainingProgramService;
-import ci.ada.fitness.services.UserService;
 import ci.ada.fitness.services.mapper.TrainingProgramMapper;
 import ci.ada.fitness.utils.SlugifyUtils;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,7 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
     private final TrainingProgramMapper trainingProgramMapper;
     private final TrainingProgramRepository trainingProgramRepository;
     private final UserRepository userRepository;
-    private final UserService userService;
+    private final ClientService clientService;
 
     @Override
     public TrainingProgramDTO save(TrainingProgramDTO trainingProgramDTO) {
