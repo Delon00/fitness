@@ -3,6 +3,8 @@ package ci.ada.fitness.services.DTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public class SpecialityDTO extends BaseEntityDTO{
@@ -15,5 +17,5 @@ public class SpecialityDTO extends BaseEntityDTO{
 
     private String slug;
 
-    private set<CoachDTO> coaches;
+    private Set<CoachDTO> coaches;
 }

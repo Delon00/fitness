@@ -34,10 +34,10 @@ public class User implements Serializable {
     private Integer birthday;
 
     @Column(name = "weight", nullable = false)
-    private Float weight;
+    private Integer weight;
 
     @Column(name = "size", nullable = false)
-    private Float size;
+    private Integer size;
 
     @Column(name = "objective", nullable = false)
     private String objective;
@@ -50,5 +50,8 @@ public class User implements Serializable {
 
     @OneToMany
     private Set<TrainingProgram> trainingPrograms;
+
+    @OneToMany(mappedBy = "user")
+    private List<Speciality> specialities;
 
 }

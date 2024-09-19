@@ -79,18 +79,18 @@ public class CoachRessource {
     }
 
 
-    @GetMapping("/slug/{slug}")
-    @ApiResponse(responseCode = "200", description = "Return a coach by its slug")
-    @Operation(summary = "Find a coach by its slug", description = "This endpoint allows to find a coach by its slug")
-    public ResponseEntity<CoachDTO> findCoachBySlug(
-            @Parameter(required = true, description = "Slug of the coach to be retrieved")
-            @PathVariable String slug
-    ) {
-        log.debug("REST request to get Coach by slug : {}", slug);
-        Optional<CoachDTO> coach = coachService.findBySlug(slug);
-        if (coach.isPresent()) {
-            return new ResponseEntity<>(coach.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+//    @GetMapping("/slug/{slug}")
+//    @ApiResponse(responseCode = "200", description = "Return a coach by its slug")
+//    @Operation(summary = "Find a coach by its slug", description = "This endpoint allows to find a coach by its slug")
+//    public ResponseEntity<CoachDTO> findCoachBySlug(
+//            @Parameter(required = true, description = "Slug of the coach to be retrieved")
+//            @PathVariable String slug
+//    ) {
+//        log.debug("REST request to get Coach by slug : {}", slug);
+//        Optional<CoachDTO> coach = coachService.findBySlug(slug);
+//        if (coach.isPresent()) {
+//            return new ResponseEntity<>(coach.get(), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
 }

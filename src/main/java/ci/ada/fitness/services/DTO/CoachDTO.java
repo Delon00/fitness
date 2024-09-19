@@ -3,6 +3,8 @@ package ci.ada.fitness.services.DTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public class CoachDTO {
@@ -19,5 +21,5 @@ public class CoachDTO {
 
     private String slug;
 
-    private set<SpecialityDTO> specialities;
+    private Set<SpecialityDTO> specialities;
 }

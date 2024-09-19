@@ -32,6 +32,7 @@ public class Coach implements Serializable {
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
+
     @OneToMany
     @JoinTable(
             name = "coach_speciality",

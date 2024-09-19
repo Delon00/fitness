@@ -23,9 +23,9 @@ public class UserDTO {
 
     private Integer birthday;
 
-    private Float weight;
+    private Integer weight;
 
-    private Float size;
+    private Integer size;
 
     private String objective;
 
