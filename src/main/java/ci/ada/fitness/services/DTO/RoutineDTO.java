@@ -18,7 +18,6 @@ public class RoutineDTO extends BaseEntityDTO  {
 
 //    private List<ExerciseDTO> exercises;
 //
-    private List<PerformanceDTO> performances;
 
     private TrainingProgramDTO trainingProgram;
 

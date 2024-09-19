@@ -30,7 +30,6 @@ public class UserDTO {
 
     private String slug;
 
-    private List<PerformanceDTO> performances;
 
     private List<RoutineDTO> routines;
 

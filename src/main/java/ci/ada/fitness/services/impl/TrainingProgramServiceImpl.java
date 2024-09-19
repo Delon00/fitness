@@ -31,8 +31,6 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
     @Override
     public TrainingProgramDTO save(TrainingProgramDTO trainingProgramDTO) {
         log.debug("Request to save trainingProgram: {}", trainingProgramDTO);
-        final String slug = SlugifyUtils.generate(String.valueOf(trainingProgramDTO.getLevelRequired()));
-        trainingProgramDTO.setSlug(slug);
         TrainingProgram trainingProgram = trainingProgramMapper.toEntity(trainingProgramDTO);
         User user = userRepository.findById(trainingProgramDTO.getUser().getId()).orElseThrow(() -> new RuntimeException("User not found"));
         trainingProgram.setUser(user);
@@ -106,12 +104,6 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
                     }
                     if (trainingProgramDTO.getLevelRequired() != null) {
                         existingtrainingProgram.setLevelRequired(trainingProgramDTO.getLevelRequired());
-                    }
-                    if (trainingProgramDTO.getSlug() != null) {
-                        existingtrainingProgram.setSlug(trainingProgramDTO.getSlug());
-                    }
-                    if (trainingProgramDTO.getProgramObjective() != null) {
-                        existingtrainingProgram.setProgramObjective(trainingProgramDTO.getProgramObjective());
                     }
 
                     return trainingProgramRepository.save(existingtrainingProgram);
