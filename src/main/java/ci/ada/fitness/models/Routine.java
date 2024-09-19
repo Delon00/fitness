@@ -34,4 +34,8 @@ public class Routine implements Serializable {
     @JoinColumn(name = "training_program_id")
     private TrainingProgram trainingProgram;
 
+    @OneToMany
+    @JoinColumn(name = "exercise_id")
+    private List<Exercise> exercises;
+
 }

@@ -10,7 +10,7 @@ public class PersonalizedAdviceMapping {
 
     }
     public static void partialUpdate(PersonalizedAdvice personalizedAdvice, PersonalizedAdviceDTO personalizedAdviceDTO) {
-        if(personalizedAdviceDTO.getAdvice() != null) {
+        if(personalizedAdviceDTO.getContent() != null) {
             personalizedAdvice.setId(personalizedAdviceDTO.getId());
         }
     }

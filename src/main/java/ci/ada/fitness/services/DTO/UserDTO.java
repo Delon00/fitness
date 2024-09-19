@@ -1,5 +1,9 @@
 package ci.ada.fitness.services.DTO;
 
+import ci.ada.fitness.models.Routine;
+import ci.ada.fitness.models.Speciality;
+import ci.ada.fitness.models.TrainingProgram;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,5 +38,7 @@ public class UserDTO {
     private List<RoutineDTO> routines;
 
     private Set<TrainingProgramDTO> trainingPrograms;
+
+    private List<SpecialityDTO> specialities;
 
 }

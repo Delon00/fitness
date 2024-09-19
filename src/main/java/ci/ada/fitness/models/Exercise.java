@@ -35,4 +35,7 @@ public class Exercise implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
+    @ManyToOne
+    private Routine routine;
+
 }

@@ -33,6 +33,6 @@ public class TrainingProgram implements Serializable {
     private List<Routine> routines;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 }

@@ -45,7 +45,7 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
             existingTrainingProgram.setDescription(trainingProgramDTO.getDescription());
             existingTrainingProgram.setTotalDuration(trainingProgramDTO.getTotalDuration());
             existingTrainingProgram.setLevelRequired(trainingProgramDTO.getLevelRequired());
-            existingTrainingProgram.setProgramObjective(trainingProgramDTO.getProgramObjective());
+            existingTrainingProgram.setDescription(trainingProgramDTO.getDescription());
             return save(existingTrainingProgram);
         }).orElseThrow(() -> new RuntimeException("Training not found"));
     }
@@ -77,35 +77,22 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
         return trainingProgramRepository.findById(id).map(trainingProgramMapper::toDto);
     }
 
-//    @Override
-//    public Optional<TrainingProgramDTO> findBySlug(String slug) {
-//        return trainingProgramRepository.findBySlug(slug).map(trainingProgramMapper::toDto)
-//                .map(trainingProgramDTO -> {
-//                    log.info("trainingProgram found: {}", trainingProgramDTO);
-//                    return trainingProgramDTO;
-//                })
-//                .or(() -> {
-//                    log.warn("trainingProgram not found for slug: {}", slug);
-//                    return Optional.empty();
-//                });
-//    }
+    @Override
+    public Optional<TrainingProgramDTO> findBySlug(String slug) {
+        return trainingProgramRepository.findBySlug(slug).map(trainingProgramMapper::toDto)
+                .map(trainingProgramDTO -> {
+                    log.info("trainingProgram found: {}", trainingProgramDTO);
+                    return trainingProgramDTO;
+                })
+                .or(() -> {
+                    log.warn("trainingProgram not found for slug: {}", slug);
+                    return Optional.empty();
+                });
+    }
 
     @Override
     public TrainingProgramDTO partialUpdate(TrainingProgramDTO trainingProgramDTO, Long id) {
         return trainingProgramRepository.findById(id).map(existingtrainingProgram -> {
-                    if (trainingProgramDTO.getName() != null) {
-                        existingtrainingProgram.setName(trainingProgramDTO.getName());
-                    }
-                    if (trainingProgramDTO.getDescription() != null) {
-                        existingtrainingProgram.setDescription(trainingProgramDTO.getDescription());
-                    }
-                    if (trainingProgramDTO.getTotalDuration() != null) {
-                        existingtrainingProgram.setTotalDuration(trainingProgramDTO.getTotalDuration());
-                    }
-                    if (trainingProgramDTO.getLevelRequired() != null) {
-                        existingtrainingProgram.setLevelRequired(trainingProgramDTO.getLevelRequired());
-                    }
-
                     return trainingProgramRepository.save(existingtrainingProgram);
                 }).map(trainingProgramMapper::toDto)
                 .orElseThrow(() -> new IllegalArgumentException("trainingProgram not found with id: " + id));

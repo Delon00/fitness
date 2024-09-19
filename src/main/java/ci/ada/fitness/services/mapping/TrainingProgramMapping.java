@@ -16,9 +16,6 @@ public class TrainingProgramMapping {
         if(trainingProgramDTO.getDescription() != null) {
             trainingProgram.setDescription(trainingProgramDTO.getDescription());
         }
-        if(trainingProgramDTO.getLevelRequired() != null) {
-            trainingProgram.setLevelRequired(trainingProgramDTO.getLevelRequired());
-        }
     }
 
 }

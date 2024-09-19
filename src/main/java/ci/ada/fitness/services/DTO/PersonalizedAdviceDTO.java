@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class PersonalizedAdviceDTO extends BaseEntityDTO {
+public class PersonalizedAdviceDTO {
 
     private Long id;
 

@@ -10,9 +10,6 @@ public class UserMapping {
     }
 
     public static void partialUpdate(User user, UserDTO userDTO) {
-        if(userDTO.getLevel() != null) {
-            user.setLevel(userDTO.getLevel());
-        }
         if(userDTO.getObjective() != null) {
             user.setObjective(userDTO.getObjective());
         }

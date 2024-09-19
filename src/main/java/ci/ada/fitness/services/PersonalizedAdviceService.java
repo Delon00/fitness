@@ -21,6 +21,8 @@ public interface PersonalizedAdviceService {
 
     Optional<PersonalizedAdviceDTO>findById(Long id);
 
-
     PersonalizedAdviceDTO partialUpdate(PersonalizedAdviceDTO personalizedAdviceDTO, Long id);
+
+    Optional<PersonalizedAdviceDTO> findBySlug(String slug);
+
 }

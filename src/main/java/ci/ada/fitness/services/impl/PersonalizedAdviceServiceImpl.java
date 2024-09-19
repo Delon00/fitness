@@ -23,7 +23,7 @@ public class PersonalizedAdviceServiceImpl implements PersonalizedAdviceService 
     @Override
     public PersonalizedAdviceDTO save(PersonalizedAdviceDTO personalizedAdviceDTO) {
         log.debug("REST Request to save PersonalizedAdvice : {}", personalizedAdviceDTO);
-        final String slug = SlugifyUtils.generate(String.valueOf(personalizedAdviceDTO.getAdvice()));
+        final String slug = SlugifyUtils.generate(String.valueOf(personalizedAdviceDTO.getDateAdvice()));
         personalizedAdviceDTO.setSlug(slug);
         PersonalizedAdvice personalizedAdvice = personalizedAdviceMapper.toEntity(personalizedAdviceDTO);
         log.debug("User after mapping{}", personalizedAdvice);
@@ -35,7 +35,7 @@ public class PersonalizedAdviceServiceImpl implements PersonalizedAdviceService 
     public PersonalizedAdviceDTO update(PersonalizedAdviceDTO personalizedAdviceDTO) {
         log.debug("REST Request to update PersonalizedAdvice : {}", personalizedAdviceDTO);
         return findOne(personalizedAdviceDTO.getId()).map(existingRoutine -> {
-            existingRoutine.setDate(personalizedAdviceDTO.getDate());
+            existingRoutine.setSlug(personalizedAdviceDTO.getSlug());
             return save(existingRoutine);
         }).orElseThrow(()-> new RuntimeException("PersonalizedAdvice not found"));
     }
@@ -78,12 +78,26 @@ public class PersonalizedAdviceServiceImpl implements PersonalizedAdviceService 
     public PersonalizedAdviceDTO partialUpdate(PersonalizedAdviceDTO personalizedAdviceDTO, Long id) {
         log.debug("REST Request to partialUpdate PersonalizedAdvice : {}", personalizedAdviceDTO);
         return personalizedAdviceRepository.findById(id).map(existingRoutine -> {
-                    if (personalizedAdviceDTO.getDate() != null) {
+                    if (personalizedAdviceDTO.getContent() != null) {
                         existingRoutine.setId(personalizedAdviceDTO.getId());
                     }
 
                     return personalizedAdviceRepository.save(existingRoutine);
                 }).map(personalizedAdviceMapper::toDto)
                 .orElseThrow(() -> new IllegalArgumentException("Routine not found with id: " + personalizedAdviceDTO.getId()));
+    }
+
+    @Override
+    public Optional<PersonalizedAdviceDTO> findBySlug(String slug) {
+        log.debug("Request to get PersonalizedAdvice by slug: {}", slug);
+        return personalizedAdviceRepository.findBySlug(slug).map(personalizedAdviceMapper::toDto)
+               .map(personalizedAdviceDTO -> {
+                    log.info("PersonalizedAdvice found: {}", personalizedAdviceDTO);
+                    return personalizedAdviceDTO;
+                })
+                .or(() -> {
+                    log.info("PersonalizedAdvice not found by slug: {}", slug);
+                    return Optional.empty();
+                });
     }
 }
