@@ -32,4 +32,7 @@ public class Exercise implements Serializable {
     @Column(name = "duration", nullable = false)
     private String duration;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
 }

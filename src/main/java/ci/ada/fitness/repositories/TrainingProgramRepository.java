@@ -7,5 +7,5 @@ import java.util.Optional;
 
 
 public interface TrainingProgramRepository extends JpaRepository<TrainingProgram, Long> {
-//    Optional<TrainingProgram> findBySlug(String slug);
+    Optional<TrainingProgram> findBySlug(String slug);
 }

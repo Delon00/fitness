@@ -8,6 +8,5 @@ import java.util.Optional;
 
 
 public interface PersonalizedAdviceRepository extends JpaRepository<PersonalizedAdvice, Long> {
-    // Vous pouvez ajouter des méthodes spécifiques si nécessaire
 }
 

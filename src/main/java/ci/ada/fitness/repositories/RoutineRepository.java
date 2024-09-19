@@ -8,5 +8,5 @@ import java.util.Optional;
 
 
 public interface RoutineRepository extends JpaRepository<Routine, Long> {
-//    Optional<Routine> findBySlug(String slug);
+    Optional<Routine> findBySlug(String slug);
 }
