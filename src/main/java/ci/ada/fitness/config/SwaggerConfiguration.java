@@ -11,9 +11,9 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI getOpenAPI() {
         final Info info = new Info()
-                .title("MonEtabAPIs")
+                .title("Fitness")
                 .version("2.0.2")
-                .description("These APIs expose Mon ETAB endpoints");
+                .description("These APIs expose mon fitness endpoints");
 
         return new OpenAPI().info(info);
     }

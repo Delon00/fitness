@@ -29,9 +29,6 @@ public class TrainingProgram implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @OneToMany
-    private List<Routine> routines;
-
     @OneToOne
     private User user;
 }

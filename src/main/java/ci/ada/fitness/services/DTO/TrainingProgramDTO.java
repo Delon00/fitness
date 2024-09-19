@@ -21,7 +21,5 @@ public class TrainingProgramDTO {
 
     private String slug;
 
-    private List<RoutineDTO> routines;
-
     private UserDTO user;
 }

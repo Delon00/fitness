@@ -40,8 +40,8 @@ public class RoutineServiceImpl implements RoutineService {
         List<Exercise> exercises = exerciseRepository.findByRoutineId(routine.getId());
         routine.setExercises(exercises);
 
-        TrainingProgram trainingProgram = trainingProgramRepository.findById(routineDTO.getTrainingProgram().getId()).orElseThrow(() -> new RuntimeException("Training not found"));
-        routine.setTrainingProgram(trainingProgram);
+//        TrainingProgram trainingProgram = trainingProgramRepository.findById(routineDTO.getTrainingProgram().getId()).orElseThrow(() -> new RuntimeException("Training not found"));
+//        routine.setTrainingProgram(trainingProgram);
 
         routine = routineRepository.save(routine);
         return routineMapper.toDto(routine);
