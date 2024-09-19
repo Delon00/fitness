@@ -1,7 +1,9 @@
 package ci.ada.fitness.services.impl;
 
+import ci.ada.fitness.models.Exercise;
 import ci.ada.fitness.models.Routine;
 import ci.ada.fitness.models.TrainingProgram;
+import ci.ada.fitness.repositories.ExerciseRepository;
 import ci.ada.fitness.repositories.RoutineRepository;
 import ci.ada.fitness.repositories.TrainingProgramRepository;
 import ci.ada.fitness.repositories.UserRepository;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -25,6 +28,7 @@ public class RoutineServiceImpl implements RoutineService {
     private final RoutineRepository routineRepository;
     private final UserRepository userRepository;
     private final TrainingProgramRepository trainingProgramRepository;
+    private final ExerciseRepository exerciseRepository;
 
     @Override
     public RoutineDTO save(RoutineDTO routineDTO) {
@@ -32,8 +36,13 @@ public class RoutineServiceImpl implements RoutineService {
         final String slug = SlugifyUtils.generate(("routine-"));
         routineDTO.setSlug(slug);
         Routine routine = routineMapper.toEntity(routineDTO);
+
+        List<Exercise> exercises = exerciseRepository.findByRoutineId(routine.getId());
+        routine.setExercises(exercises);
+
         TrainingProgram trainingProgram = trainingProgramRepository.findById(routineDTO.getTrainingProgram().getId()).orElseThrow(() -> new RuntimeException("Training not found"));
         routine.setTrainingProgram(trainingProgram);
+
         routine = routineRepository.save(routine);
         return routineMapper.toDto(routine);
     }
@@ -44,7 +53,7 @@ public class RoutineServiceImpl implements RoutineService {
         return findOne(routineDTO.getId()).map(existingRoutine -> {
             existingRoutine.setDate(routineDTO.getDate());
             return save(existingRoutine);
-        }).orElseThrow(()-> new RuntimeException("Routine not found"));
+        }).orElseThrow(() -> new RuntimeException("Routine not found"));
     }
 
     @Override

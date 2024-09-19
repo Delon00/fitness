@@ -2,7 +2,9 @@ package ci.ada.fitness.services.impl;
 
 
 import ci.ada.fitness.models.PersonalizedAdvice;
+import ci.ada.fitness.models.Routine;
 import ci.ada.fitness.repositories.PersonalizedAdviceRepository;
+import ci.ada.fitness.repositories.RoutineRepository;
 import ci.ada.fitness.services.DTO.PersonalizedAdviceDTO;
 import ci.ada.fitness.services.PersonalizedAdviceService;
 import ci.ada.fitness.services.mapper.PersonalizedAdviceMapper;
@@ -20,16 +22,29 @@ import java.util.Optional;
 public class PersonalizedAdviceServiceImpl implements PersonalizedAdviceService {
     private final PersonalizedAdviceMapper personalizedAdviceMapper;
     private final PersonalizedAdviceRepository personalizedAdviceRepository;
+    private final RoutineRepository routineRepository;
 
     @Override
     public PersonalizedAdviceDTO save(PersonalizedAdviceDTO personalizedAdviceDTO) {
         log.debug("REST Request to save PersonalizedAdvice : {}", personalizedAdviceDTO);
         final String slug = SlugifyUtils.generate(String.valueOf(personalizedAdviceDTO.getDateAdvice()));
         personalizedAdviceDTO.setSlug(slug);
-        PersonalizedAdvice personalizedAdvice = personalizedAdviceMapper.toEntity(personalizedAdviceDTO);
-        log.debug("User after mapping{}", personalizedAdvice);
-        personalizedAdvice = personalizedAdviceRepository.save(personalizedAdvice);
-        return personalizedAdviceMapper.toDto(personalizedAdvice);
+//        PersonalizedAdvice personalizedAdvice = personalizedAdviceMapper.toEntity(personalizedAdviceDTO);
+
+        Optional<Routine> routine = routineRepository.findById(personalizedAdviceDTO.getRoutine().getId());
+        if (routine.isPresent()) {
+            PersonalizedAdvice personalizedAdvice = personalizedAdviceMapper.toEntity(personalizedAdviceDTO);
+            personalizedAdvice.setRoutine(routine.get());
+            log.debug("User after mapping{}", personalizedAdvice);
+            personalizedAdvice = personalizedAdviceRepository.save(personalizedAdvice);
+            return personalizedAdviceMapper.toDto(personalizedAdvice);
+        } else {
+            throw new RuntimeException("Routine not found");
+        }
+//
+//        log.debug("User after mapping{}", personalizedAdvice);
+//        personalizedAdvice = personalizedAdviceRepository.save(personalizedAdvice);
+//        return personalizedAdviceMapper.toDto(personalizedAdvice);
     }
 
     @Override

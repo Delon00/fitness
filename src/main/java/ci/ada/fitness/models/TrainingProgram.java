@@ -32,7 +32,6 @@ public class TrainingProgram implements Serializable {
     @OneToMany
     private List<Routine> routines;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne
     private User user;
 }

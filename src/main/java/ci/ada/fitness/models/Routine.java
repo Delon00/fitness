@@ -34,8 +34,7 @@ public class Routine implements Serializable {
     @JoinColumn(name = "training_program_id")
     private TrainingProgram trainingProgram;
 
-    @OneToMany
-    @JoinColumn(name = "exercise_id")
+    @OneToMany(mappedBy = "routine", cascade = CascadeType.ALL)
     private List<Exercise> exercises;
 
 }

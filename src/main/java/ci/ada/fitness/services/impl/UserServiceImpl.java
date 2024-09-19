@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO save(UserDTO userDTO) {
         log.debug("Request to save user: {}", userDTO);
-        final String slug = SlugifyUtils.generate(String.valueOf(userDTO.getEmail()));
+        final String slug = SlugifyUtils.generate(String.valueOf("client-"));
         userDTO.setSlug(slug);
         User user = userMapper.toEntity(userDTO);
         Speciality speciality = specialityRepository.findById(userDTO.getSpeciality().getId()).orElseThrow(() -> new RuntimeException("Forum not found"));
