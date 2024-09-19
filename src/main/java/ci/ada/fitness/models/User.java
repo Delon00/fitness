@@ -39,9 +39,6 @@ public class User implements Serializable {
     @Column(name = "size", nullable = false)
     private Float size;
 
-    @Column(name = "level", nullable = false)
-    private String level;
-
     @Column(name = "objective", nullable = false)
     private String objective;
 
