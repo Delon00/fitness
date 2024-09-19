@@ -54,4 +54,7 @@ public class User implements Serializable {
     @OneToMany
     private Set<TrainingProgram> trainingPrograms;
 
+    @OneToMany(mappedBy = "user")
+    private List<Speciality> specialities;
+
 }

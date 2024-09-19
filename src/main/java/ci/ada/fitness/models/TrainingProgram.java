@@ -29,8 +29,6 @@ public class TrainingProgram implements Serializable {
     @Column(name = "level-required", nullable = false)
     private String levelRequired;
 
-    @Column(name = "program_objective", nullable = false)
-    private String programObjective;
 
     @OneToMany
     private List<Routine> routines;

@@ -30,4 +30,8 @@ public class Speciality implements Serializable {
 
     @ManyToMany(mappedBy = "specialities")
     private Set<Coach> coaches;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
