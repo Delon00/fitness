@@ -1,11 +1,9 @@
 package ci.ada.fitness;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.time.Instant;
-
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -13,7 +11,7 @@ public class FitnessApplication implements CommandLineRunner {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(MonetabApplication.class, args);
+        SpringApplication.run(FitnessApplication.class, args);
     }
 
     @Override
