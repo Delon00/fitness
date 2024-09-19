@@ -23,7 +23,4 @@ public class SpecialityDTO{
 
     private String slug;
 
-    private Set<CoachDTO> coaches;
-
-    private UserDTO user;
 }

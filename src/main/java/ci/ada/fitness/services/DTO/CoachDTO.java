@@ -1,5 +1,6 @@
 package ci.ada.fitness.services.DTO;
 
+import ci.ada.fitness.models.Speciality;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +16,8 @@ public class CoachDTO {
 
     private String lastName;
 
-    private String email;
-
-    private String phone;
-
     private String slug;
 
-    private Set<SpecialityDTO> specialities;
+    private Speciality speciality;
+
 }

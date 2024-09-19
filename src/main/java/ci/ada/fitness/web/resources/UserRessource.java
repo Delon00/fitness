@@ -25,7 +25,6 @@ public class UserRessource {
 
     private final UserService userService;
 
-
     @PostMapping
     @ApiResponse(responseCode = "200", description = "Request to save User")
     @Operation(summary = "save new user", description = "this endpoint allow to save user")

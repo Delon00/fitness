@@ -1,9 +1,14 @@
 package ci.ada.fitness.services.impl;
 
+import ci.ada.fitness.models.Coach;
+import ci.ada.fitness.models.Speciality;
 import ci.ada.fitness.repositories.CoachRepository;
+import ci.ada.fitness.repositories.SpecialityRepository;
 import ci.ada.fitness.services.CoachService;
 import ci.ada.fitness.services.DTO.CoachDTO;
 import ci.ada.fitness.services.mapper.CoachMapper;
+import ci.ada.fitness.utils.SlugifyUtils;
+import jakarta.persistence.OneToOne;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,12 +23,20 @@ public class CoachServiceImpl implements CoachService {
 
     private final CoachRepository coachRepository;
     private final CoachMapper coachMapper;
+    private final SpecialityRepository specialityRepository;
 
 
     @Override
     public CoachDTO save(CoachDTO coachDTO) {
         log.debug("REST Request to save Coach : {}", coachDTO);
-        return null;
+        final String slug = SlugifyUtils.generate(String.valueOf("coach-"));
+        coachDTO.setSlug(slug);
+
+        Coach coach = coachMapper.toEntity(coachDTO);
+        Speciality speciality = specialityRepository.findById(coachDTO.getSpeciality().getId()).orElseThrow(() -> new RuntimeException("Forum not found"));
+        coach.setSpeciality(speciality);
+        coach = coachRepository.save(coach);
+        return coachMapper.toDto(coach);
     }
 
     @Override

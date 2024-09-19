@@ -40,6 +40,7 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public RoutineDTO update(RoutineDTO routineDTO) {
+        log.debug("Request to update : {}", routineDTO);
         return findOne(routineDTO.getId()).map(existingRoutine -> {
             existingRoutine.setDate(routineDTO.getDate());
             return save(existingRoutine);
@@ -48,17 +49,20 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public RoutineDTO update(RoutineDTO routineDTO, Long id) {
+        log.debug("Request to update routine : {}", routineDTO);
         routineDTO.setId(id);
         return update(routineDTO);
     }
 
     @Override
     public Optional<RoutineDTO> findOne(Long id) {
+        log.debug("Request to get routine by id:{}", id);
         return routineRepository.findById(id).map(routineMapper::toDto);
     }
 
     @Override
     public List<RoutineDTO> findAll() {
+        log.debug("Request to get all routines");
         return routineRepository.findAll().stream().map(routineMapper::toDto).toList();
     }
 
@@ -70,22 +74,23 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     public Optional<RoutineDTO> findById(Long id) {
+        log.debug("Request to get routine by id:{}", id);
         return routineRepository.findById(id).map(routineMapper::toDto);
     }
 
-//    @Override
-//    public Optional<RoutineDTO> findBySlug(String slug) {
-//        log.debug("Request to get Routine by slug: {}", slug);
-//        return routineRepository.findBySlug(slug).map(routineMapper::toDto)
-//                .map(routineDTO -> {
-//                    log.info("Routine found: {}", routineDTO);
-//                    return routineDTO;
-//                })
-//                .or(() -> {
-//                    log.warn("Routine not found for slug: {}", slug);
-//                    return Optional.empty();
-//                });
-//    }
+    @Override
+    public Optional<RoutineDTO> findBySlug(String slug) {
+        log.debug("Request to get Routine by slug: {}", slug);
+        return routineRepository.findBySlug(slug).map(routineMapper::toDto)
+                .map(routineDTO -> {
+                    log.info("Routine found: {}", routineDTO);
+                    return routineDTO;
+                })
+                .or(() -> {
+                    log.warn("Routine not found for slug: {}", slug);
+                    return Optional.empty();
+                });
+    }
 
     @Override
     public RoutineDTO partialUpdate(RoutineDTO routineDTO, Long id) {

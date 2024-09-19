@@ -13,7 +13,6 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "speciality")
-
 @NoArgsConstructor
 public class Speciality implements Serializable {
 
@@ -31,10 +30,4 @@ public class Speciality implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @ManyToMany(mappedBy = "specialities")
-    private Set<Coach> coaches;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
 }

@@ -25,10 +25,10 @@ public class SpecialityServiceImpl implements SpecialityService {
     @Override
     public SpecialityDTO save(SpecialityDTO specialityDTO) {
         log.debug("Request to save speciality: {}", specialityDTO);
-        final String slug = SlugifyUtils.generate(String.valueOf("speciality"));
+        final String slug = SlugifyUtils.generate(String.valueOf("speciality-"));
         specialityDTO.setSlug(slug);
         Speciality speciality = specialityMapper.toEntity(specialityDTO);
-        log.debug("User after mapping{}", speciality);
+        log.debug("Specialite after mapping{}", speciality);
         speciality = specialityRepository.save(speciality);
         return specialityMapper.toDto(speciality);
     }

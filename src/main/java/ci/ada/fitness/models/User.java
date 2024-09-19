@@ -45,13 +45,7 @@ public class User implements Serializable {
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @OneToMany
-    private List<Routine> routines;
-
-    @OneToMany
-    private Set<TrainingProgram> trainingPrograms;
-
-    @OneToMany(mappedBy = "user")
-    private List<Speciality> specialities;
+    @OneToOne
+    private Speciality speciality;
 
 }

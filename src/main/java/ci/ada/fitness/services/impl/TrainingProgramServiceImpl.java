@@ -40,11 +40,9 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
 
     @Override
     public TrainingProgramDTO update(TrainingProgramDTO trainingProgramDTO) {
+        log.debug("Request to update trainingProgram: {}", trainingProgramDTO);
         return findOne(trainingProgramDTO.getId()).map(existingTrainingProgram -> {
             existingTrainingProgram.setName(trainingProgramDTO.getName());
-            existingTrainingProgram.setDescription(trainingProgramDTO.getDescription());
-            existingTrainingProgram.setTotalDuration(trainingProgramDTO.getTotalDuration());
-            existingTrainingProgram.setLevelRequired(trainingProgramDTO.getLevelRequired());
             existingTrainingProgram.setDescription(trainingProgramDTO.getDescription());
             return save(existingTrainingProgram);
         }).orElseThrow(() -> new RuntimeException("Training not found"));
@@ -52,12 +50,14 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
 
     @Override
     public TrainingProgramDTO update(TrainingProgramDTO trainingProgramDTO, Long id) {
+        log.debug("Request to update");
         trainingProgramDTO.setId(id);
         return update(trainingProgramDTO);
     }
 
     @Override
     public Optional<TrainingProgramDTO> findOne(Long id) {
+        log.debug("Request to get trainingProgram by id:{}", id);
         return trainingProgramRepository.findById(id).map(trainingProgramMapper::toDto);
     }
 
@@ -69,16 +69,19 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
 
     @Override
     public void delete(Long id) {
+        log.debug("Request to delete trainingProgram: {}", id);
         trainingProgramRepository.deleteById(id);
     }
 
     @Override
     public Optional<TrainingProgramDTO> findById(Long id) {
+
         return trainingProgramRepository.findById(id).map(trainingProgramMapper::toDto);
     }
 
     @Override
     public Optional<TrainingProgramDTO> findBySlug(String slug) {
+
         return trainingProgramRepository.findBySlug(slug).map(trainingProgramMapper::toDto)
                 .map(trainingProgramDTO -> {
                     log.info("trainingProgram found: {}", trainingProgramDTO);

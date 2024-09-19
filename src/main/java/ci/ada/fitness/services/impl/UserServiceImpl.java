@@ -1,6 +1,8 @@
 package ci.ada.fitness.services.impl;
 
+import ci.ada.fitness.models.Speciality;
 import ci.ada.fitness.models.User;
+import ci.ada.fitness.repositories.SpecialityRepository;
 import ci.ada.fitness.repositories.UserRepository;
 import ci.ada.fitness.services.DTO.UserDTO;
 import ci.ada.fitness.services.UserService;
@@ -21,6 +23,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
     private final UserRepository userRepository;
+    private final SpecialityRepository specialityRepository;
+
 
     @Override
     public UserDTO save(UserDTO userDTO) {
@@ -28,7 +32,8 @@ public class UserServiceImpl implements UserService {
         final String slug = SlugifyUtils.generate(String.valueOf(userDTO.getEmail()));
         userDTO.setSlug(slug);
         User user = userMapper.toEntity(userDTO);
-        log.debug("User after mapping{}", user);
+        Speciality speciality = specialityRepository.findById(userDTO.getSpeciality().getId()).orElseThrow(() -> new RuntimeException("Forum not found"));
+        user.setSpeciality(speciality);
         user = userRepository.save(user);
         return userMapper.toDto(user);
     }

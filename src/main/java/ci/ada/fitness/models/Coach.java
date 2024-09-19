@@ -5,13 +5,11 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "coach")
-@AllArgsConstructor
 @NoArgsConstructor
 public class Coach implements Serializable {
 
@@ -26,23 +24,9 @@ public class Coach implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "phone", nullable = false, unique = true)
-    private String phone;
-
     @Column(name = "slug", unique = true, nullable = false)
     private String slug;
 
-    @OneToMany
-    @JoinTable(
-            name = "coach_speciality",
-            joinColumns =
-            @JoinColumn(name = "coach_id"),
-            inverseJoinColumns =
-            @JoinColumn(name = "speciality_id")
-    )
-    private Set<Speciality> specialities;
-
+    @OneToOne
+    private Speciality speciality;
 }

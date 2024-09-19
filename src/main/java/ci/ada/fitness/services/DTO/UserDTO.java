@@ -35,10 +35,6 @@ public class UserDTO {
 
     private String slug;
 
-    private List<RoutineDTO> routines;
-
-    private Set<TrainingProgramDTO> trainingPrograms;
-
-    private List<SpecialityDTO> specialities;
+    private Speciality speciality;
 
 }
