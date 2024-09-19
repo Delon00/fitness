@@ -1,4 +1,6 @@
 package ci.ada.fitness.models;
 
-public class Coach {
+import java.io.Serializable;
+
+public class Coach extends BaseEntity implements Serializable {
 }

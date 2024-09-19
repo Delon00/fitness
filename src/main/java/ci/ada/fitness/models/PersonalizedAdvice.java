@@ -21,8 +21,4 @@ public class PersonalizedAdvice extends BaseEntity implements Serializable {
     @JoinColumn(name = "routine_id", nullable = false)
     private Routine routine;
 
-    @ManyToOne
-    @JoinColumn(name = "performance_id", nullable = false)
-    private Performance performance;
-
 }
