@@ -32,6 +32,8 @@ public class Coach implements Serializable {
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
 
     @OneToMany
     @JoinTable(

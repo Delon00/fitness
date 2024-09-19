@@ -21,6 +21,9 @@ public class PersonalizedAdvice implements Serializable {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @Column(name = "dateAdvice", nullable = false)
     private Instant dateAdvice;
 

@@ -23,6 +23,9 @@ public class Routine implements Serializable {
     @Column(name = "date", nullable = false)
     private Date date;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @ManyToOne
     @JoinColumn(name = "personalized_advice_id")
     private PersonalizedAdvice personalizedAdvice;

@@ -28,6 +28,9 @@ public class Speciality implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "slug", unique = true, nullable = false)
+    private String slug;
+
     @ManyToMany(mappedBy = "specialities")
     private Set<Coach> coaches;
 
