@@ -21,7 +21,7 @@ public interface TrainingProgramService {
 
     Optional<TrainingProgramDTO>findById(Long id);
 
-    Optional<TrainingProgramDTO> findBySlug(String slug);
+//    Optional<TrainingProgramDTO> findBySlug(String slug);
 
     TrainingProgramDTO partialUpdate(TrainingProgramDTO trainingProgramDTO, Long id);
 }

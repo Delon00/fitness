@@ -7,12 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "speciality")
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class Speciality implements Serializable {
 
@@ -26,4 +27,7 @@ public class Speciality implements Serializable {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @ManyToMany(mappedBy = "specialities")
+    private Set<Coach> coaches;
 }

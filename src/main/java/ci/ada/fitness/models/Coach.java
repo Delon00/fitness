@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,6 +31,16 @@ public class Coach implements Serializable {
 
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
+
+    @OneToMany
+    @JoinTable(
+            name = "coach_speciality",
+            joinColumns =
+            @JoinColumn(name = "coach_id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "speciality_id")
+    )
+    private Set<Speciality> specialities;
 
 
 }
