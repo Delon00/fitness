@@ -1,4 +1,4 @@
-/*
+
 package ci.ada.fitness.security;
 
 
@@ -13,4 +13,3 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 }
- */
